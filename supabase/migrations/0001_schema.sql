@@ -337,8 +337,11 @@ create policy "scouting_insert" on scouting for insert with check (is_member());
 create policy "scouting_staff" on scouting for update using (is_staff() or scout_id = auth.uid());
 
 -- ───────── Reporte para patrocinadores (sin datos personales) ─────────
-create function sponsor_report(p_season int) returns jsonb language sql stable security definer set search_path = public as $$
-  select case when my_role() in ('patrocinador','coach','mentor','lider') then jsonb_build_object(
+create function sponsor_report(p_season int default null) returns jsonb language plpgsql stable security definer set search_path = public as $$
+begin
+  if p_season is null then select id into p_season from seasons where current limit 1; end if;
+  return (select case when my_role() in ('patrocinador','coach','mentor','lider') then jsonb_build_object(
+    'temporada', (select year || ' ' || name from seasons where id = p_season),
     'alumnos_activos', (select count(*) from profiles where role in ('alumno','lider') and active),
     'por_nivel', (select coalesce(jsonb_object_agg(level, n), '{}') from (select level, count(*) n from profiles where role in ('alumno','lider') and active group by level) x),
     'induccion_pct', (select round(100.0 * count(*) filter (where safety_ok) / nullif(count(*),0)) from profiles where role in ('alumno','lider') and active),
@@ -350,5 +353,5 @@ create function sponsor_report(p_season int) returns jsonb language sql stable s
         'ejercido_mxn', (select coalesce(sum(p.qty * p.unit_cost_usd * s.usd_mxn),0) from parts p join seasons s on s.id = p.season_id where p.season_id = p_season and p.status <> 'pendiente'))),
     'partidos', (select jsonb_build_object('W', count(*) filter (where result='W'), 'L', count(*) filter (where result='L'), 'T', count(*) filter (where result='T')) from matches m join events e on e.id = m.event_id where e.season_id = p_season),
     'asesorias_realizadas', (select count(*) from mentoring where status = 'realizada')
-  ) end
-$$;
+  ) end);
+end $$;
