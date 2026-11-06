@@ -53,7 +53,7 @@ export default function Guias() {
   return (
     <Page title={g?.title ?? "Reglas de diseño"} actions={<Input placeholder="Buscar en todas las guías…" value={q} onChange={(e) => setQ(e.target.value)} />}>
       <a className="laminas-cta" href={`${import.meta.env.BASE_URL}laminas.html`} target="_blank" rel="noopener">
-        🖨 <b>Láminas para imprimir</b> · 17 hojas tamaño carta con las reglas en diagramas, a color o B/N
+        🖨 <b>Láminas para imprimir</b> · 18 hojas tamaño carta con las reglas en diagramas, a color o B/N
       </a>
       <p className="muted small legend-guias">
         <span className="badge badge-info">FIRST</span> regla del manual (verificar cada año) ·{' '}

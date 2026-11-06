@@ -47,12 +47,41 @@ roboRIO ──CAN (amarillo/verde)──► dispositivo 1 ─► dispositivo 2 �
 ### Nota sobre VRM y puertos de radio
 El **VRM** (módulo de regulación de voltaje) del sistema anterior (roboRIO 1 + radio OM5P) solo se usa en 2026 con radios OM5P (eventos en China, R616-B); con el VH-109 el radio se alimenta con 12V directo o inyector pasivo (R616-A). Si ves un VRM en robots viejos del taller, no lo copies sin confirmar su legalidad.
 
-### SystemCore (sistema de control 2027)
-- **Qué sabemos (fuentes WPILib):** WPILib describe el cambio del roboRIO a **Systemcore** como "la mayor actualización del sistema de control desde el cRIO". El hardware es el **Limelight Systemcore**, basado en Raspberry Pi Compute Module 5 (CM5), CPU ARM Cortex-A76 de 4 núcleos, con CAN, I2C, USB y Ethernet, E/S reconfigurable (PWM, DIO, analógica), pantalla, LEDs e IMU integrada. Soporta varios buses CAN.
-- **WPILib 2027** deja de correr en el roboRIO; se eliminan relay, salida analógica y SPI; **Talon y VictorSP no serán legales en 2027**.
-- **Alimentación (repositorio de pruebas de WPILib, alfa):** cable **18 AWG** con ferrules blancos Weidmuller; **no usar a la vez** las dos entradas de energía (Bridge y Weidmuller).
-- **Lo que NO está confirmado:** fecha y forma exacta de distribución (un foro dice que habrá uno en el Kit of Parts, **sin confirmación oficial**), radio, fusible requerido, reglas de montaje y puertos. **Espera al Manual 2027 y a la documentación de WPILib 2027** antes de diseñar el panel definitivo.
-- **[Buena práctica]** Diseña el panel dejando espacio extra para cambiar el controlador (aprox. 2 in de margen alrededor del roboRIO) y no pegues nada permanente que impida moverlo.
+### SystemCore: la computadora del robot en 2027 (reemplaza al roboRIO)
+
+> **Confirmado por FIRST (blog 23 sep 2026):** cada equipo FRC recibe **un SystemCore de 4 GB en el Kickoff Kit 2027** y **es obligatorio usarlo en 2027**. Venta en FIRST Storefront desde el **18 nov 2026**, **1 por equipo**: 4 GB **$550 USD**; versión 2 GB $450 (fecha por anunciar). Las reglas de montaje y alimentación oficiales salen en el **Manual 2027 (9 ene 2027)**: hasta entonces todo lo de abajo es **[Fabricante]**.
+
+| | roboRIO 2 (hasta 2026) | SystemCore (2027) |
+|---|---|---|
+| Procesador | Xilinx Zynq (ARM) | Raspberry Pi **CM5**, 4 núcleos Cortex-A76 2.4 GHz + coprocesador de E/S RP2350 |
+| RAM / almacenamiento | — / microSD | **4 GB** / 16 GB eMMC |
+| CAN | 1 bus CAN 2.0 | **5 buses CAN-FD** (`can_s0`–`can_s4`), terminación 120 Ω integrada |
+| E/S | DIO, PWM, analógica, relay, SPI, MXP | **6 puertos SmartIO** reconfigurables (digital, PWM, analógica); **sin** relay, salida analógica, SPI ni MXP |
+| I2C | 1 + MXP | 2 (**SCL y SDA invertidos** vs roboRIO) |
+| USB / red | 2 USB-A, Ethernet | 4 USB 3.0 + USB-C, Ethernet 1 Gbps, Wi-Fi/BT integrados |
+| Extras | — | IMU integrada, pantalla OLED (IP, fallas, número de equipo), puerto RSL |
+| Alimentación | 12 V del PD, 10 A (R615) | 5–26 V; 6 W en reposo, **40 W máx.** |
+| Peso | — | **215 g (0.475 lb)** |
+
+**Cableado (lo que ya se sabe) [Fabricante]**
+- Se alimenta **directo del voltaje de batería** desde el PD. **No uses regulador** (el VRM no da la potencia suficiente).
+- Las unidades de producción **ya no traen conectores Weidmuller** de energía y CAN: se alimenta por el puerto **Bridge/Pwr (Molex Micro-Fit)** con el **cable de energía incluido**. Los cables **Molex-SL** para CAN y E/S vienen en la Black Tote del Kickoff Kit.
+- Breaker/fusible y canal del PD: **esperar a la regla del Manual 2027** (en 2026 el roboRIO iba con 10 A, R615).
+- CAN: sigue en cadena con terminación; con 5 buses, **reparte**: p. ej. swerve en uno, mecanismos en otro, y **cada sensor en el mismo bus que sus motores** (dispositivos de buses distintos no se ven).
+- Interruptores de límite: los SmartIO tienen *pull-down* de 4.7 kΩ; el interruptor **une SIGNAL con +3.3 V** (al revés que el roboRIO). Verifica en la documentación final.
+- Radio: el **VH-109** sigue siendo el documentado (firmware 2.0.0 trae "SystemCore Mode"). No se ha confirmado que el Wi-Fi interno se permita en competencia: **asume que no**.
+
+**Software (WPILib 2027) [Fabricante]**
+- Java 25 / C++23. Los paquetes cambian de `edu.wpi.first` a `org.wpilib` (C++: `frc::` a `wpi::`). `set()` pasa a `setThrottle()`; los controles Xbox/PS se unen en `Gamepad`; "Test" pasa a llamarse "Utility".
+- Se eliminan Shuffleboard, SmartDashboard, PathWeaver y RobotBuilder; usa Elastic o AdvantageScope. **LabVIEW no es compatible.**
+- REV (REVLib 2027) y CTRE (Phoenix 6) ya tienen versiones alfa; revisa que cada librería de terceros que uses tenga versión 2027 antes del kickoff.
+- **Talon SRX/Victor SPX (Phoenix 5) y controladores PWM viejos:** WPILib anuncia que dejan de funcionar; confirma la legalidad en el Manual 2027.
+
+**[Buena práctica] Qué hacer desde ya**
+- Deja en el panel un espacio de **≈ 140 × 75 mm** más 2 in para cables, y acceso a la pantalla y a los LEDs.
+- Planea qué mecanismo va en cada bus CAN y cuáles sensores van a SmartIO.
+- Programación: practica con la beta 2027 (repo SystemcoreTesting) y migra el código de entrenamiento a `org.wpilib`.
+- No diseñes sensores con SPI ni relay.
 
 ---
 
@@ -246,7 +275,7 @@ El panel o "board" de electrónica se diseña en CAD desde el inicio, no se impr
 - [ ] Todo etiquetado y documentado
 
 **Control y red**
-- [ ] roboRIO (o controlador 2027) alimentado directo del PD con 10A
+- [ ] roboRIO (2026) o SystemCore (2027) alimentado directo del PD, con el breaker/fusible que indique el manual vigente
 - [ ] Radio VH-109 con LEDs visibles, conectado a puerto RIO, programado para el evento
 - [ ] RSL visible a 36 in y destellando junto con el roboRIO
 - [ ] CAN en cadena, terminación correcta, IDs únicos y anotados
@@ -270,6 +299,10 @@ El panel o "board" de electrónica se diseña en CAD desde el inicio, no se impr
 - WPILib, CAN Wiring Basics: https://docs.wpilib.org/en/stable/docs/hardware/hardware-basics/can-wiring-basics.html
 - WPILib, CAN addressing: https://docs.wpilib.org/en/stable/docs/software/can-devices/can-addressing.html
 - WPILib, New for 2027 (Systemcore): https://docs.wpilib.org/en/latest/docs/yearly-overview/yearly-changelog.html
+- FIRST, Systemcore Pricing and Availability (23 sep 2026): https://www.firstinspires.org/community-blog/2026-systemcore-pricing-and-availability
+- WPILib SystemcoreTesting: https://github.com/wpilibsuite/SystemcoreTesting
+- LearnFRC, SystemCore explained (especificaciones Limelight): https://learnfrc.com/blog/frc-systemcore
+- FRCElectrical.org, FRC Control System: https://frcelectrical.org/FRC-Control-System/
 - WPILib, Systemcore Introduction: https://docs.wpilib.org/en/latest/_sources/docs/software/systemcore-info/systemcore-introduction.rst.txt
 - WPILib SystemcoreTesting (alfa): https://github.com/wpilibsuite/SystemcoreTesting
 - CTR Electronics, CANivore Intro: https://v6.docs.ctr-electronics.com/en/stable/docs/canivore/canivore-intro.html
