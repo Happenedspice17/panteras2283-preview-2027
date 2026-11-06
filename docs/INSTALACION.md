@@ -8,7 +8,7 @@ Todo corre en planes gratuitos: **Supabase Free** (base de datos, login, 500 MB)
    1. `supabase/migrations/0001_schema.sql`
    2. `supabase/seed.sql` (temporada 2027, calendario, checklist de pits, quiz de seguridad)
    3. `supabase/seed_practicas.sql` (plan de prácticas por área y nivel)
-3. *Authentication → Providers → Google*: actívalo. Necesitas un OAuth Client en Google Cloud Console (tipo *Web*), con redirect `https://<proyecto>.supabase.co/auth/v1/callback`. Si la prepa usa Google Workspace, los alumnos entran con su cuenta escolar.
+3. *Authentication → Providers → Google*: actívalo. Necesitas un OAuth Client en Google Cloud Console (tipo *Web*), con redirect `https://<proyecto>.supabase.co/auth/v1/callback`. El equipo usa su dominio de Google Workspace: en el *OAuth consent screen* elige **User type: Internal** y solo las cuentas del dominio podrán entrar con Google. Mentores y patrocinadores externos entran con enlace por correo y un coach los aprueba.
 4. *Authentication → URL Configuration*: agrega la URL de GitHub Pages (`https://<usuario>.github.io/<repo>/`) y `http://localhost:5173` en *Redirect URLs*.
 5. *Project Settings → API*: copia `Project URL` y `anon public key`.
 
