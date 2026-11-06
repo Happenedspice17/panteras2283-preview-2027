@@ -186,6 +186,32 @@ Si un agujero queda más cerca del doblez que esto, se **ovala**. Alternativa: t
 
 ## 7. Impresión 3D
 
+### Impresión 3D que no se rompe: reglas clave
+
+1. **[Buena práctica]** Orienta las capas para que la carga **no las separe**: la fuerza debe ir a lo largo de las capas, no abriéndolas (ver 7.2).
+2. **[Buena práctica]** **Perímetros > relleno**: 3-4 perímetros o más aportan más que subir el infill.
+3. **[Buena práctica]** Pon **radios (filetes) en esquinas internas** (≥1-2 mm); una esquina viva concentra el esfuerzo y ahí se rompe.
+4. **[Buena práctica]** Espesor mínimo de pared: al menos 3 perímetros (≈1.2-2 mm según boquilla); no diseñes paredes de 1 línea en piezas con carga.
+5. **[Buena práctica]** Para tornillos que se aprietan seguido: **inserto térmico** (heat-set) en vez de rosca impresa; **tuerca cautiva** si hay espacio (ver 7.3).
+6. **[Buena práctica]** Piezas que reciben golpes: **PA (nylon) o TPU**, no PLA.
+7. **[Buena práctica]** **PLA no** en zonas calientes (motores, regulación de potencia) ni donde haya impacto.
+8. **[Fabricante]** Seca el filamento (nylon sobre todo) y respeta temperaturas y cámara del fabricante (Bambu, Prusa, Polymaker); una pieza impresa con filamento húmedo sale débil y porosa.
+
+Por material del equipo (valores relativos, orientativos; confirma en la ficha técnica del filamento):
+
+| Material | Uso en el robot | Resist. / rigidez / impacto / temp. | Requisitos | Perímetros / relleno | No usar para |
+|---|---|---|---|---|---|
+| **PLA** | Prototipos, spacers, soportes ligeros | Rigidez alta / impacto bajo (frágil) / temp. baja (~55-60 C) | Sin cámara cerrada; cama ~55-60 C | 3 / 20-30 % | Zonas calientes, impacto, piezas con carga sostenida (se deforma) |
+| **PETG** | Soportes de sensores, cubiertas, piezas con algo de impacto | Resist. media / rigidez media / impacto medio / temp. media | Secar si está húmedo; cama ~70-80 C | 3-4 / 25-40 % | Cargas altas sostenidas; estructura crítica |
+| **PETG-GF / PA-GF** (fibra de vidrio) | Soportes rígidos, piezas estructurales ligeras | Rigidez alta / impacto medio / temp. media-alta (PA-GF mayor) | **Boquilla endurecida**; secar (PA-GF higroscópico); PA-GF cámara cerrada y cama ~80-100 C | 4 / 30-40 % | Piezas con contacto de desgaste (abrasivo); no lijar en seco |
+| **PA / Nylon** | Poleas, bujes, engranes, intake wheels, piezas con golpe | Resist. alta / rigidez media / **impacto alto** / temp. alta | **Secar el filamento (es higroscópico)** y secarlo durante la impresión; cámara cerrada; cama ~80-100 C | 4 / 30-40 % | Piezas de tolerancia fina sin considerar absorción de humedad (cambia medidas) |
+| **PA-CF** | Piezas estructurales ligeras y rígidas | Rigidez muy alta / impacto medio / temp. alta | **Boquilla endurecida**, secado, cámara cerrada; polvo de fibra: no lijar en seco | 4 / 30-40 % | Impacto fuerte (menos tenaz que PA liso); piezas que rozan otras piezas (abrasivo) |
+| **TPU** | Ruedas de intake, amortiguadores, fundas | Flexible; impacto muy alto; rigidez baja | Secar; imprimir lento, retracción mínima o nula; cama ~50-60 C | 3 / 15-25 % | Piezas que deban ser rígidas o precisas |
+
+**Recocido (annealing) de nylon / PA-CF (opcional):** calentar la pieza en horno (ver la ficha del filamento para temperatura y tiempo) mejora cristalinidad, rigidez y temperatura de uso, pero la pieza se encoge y deforma un poco: diseña con margen y haz una prueba. **Requiere adulto** (horno caliente).
+
+---
+
 ### 7.1 Materiales
 
 | Material | Uso en FRC | Notas |

@@ -8,6 +8,46 @@ Guía para elegir, usar y mantener las herramientas del taller del equipo: qué 
 >
 > **Regla general.** Ninguna herramienta de esta guía se usa sin **inducción firmada** y, en las máquinas de corte, taladro, esmeril, torno, fresadora, router CNC, láser y prensas, **con un adulto presente** (mentor o docente). Si no hay adulto, no se enciende la máquina.
 
+## Tarjeta rápida: tornillería #10 del equipo
+
+Tornillos Allen #10 (diámetro 0.190", ≈4.83 mm) en tres cabezas: **socket** (cilíndrica), **button** (botón) y **flat** (avellanada 82°). Casi todo el robot usa **#10-32 (fina)**; el **#10-24 (gruesa)** aparece en algunas piezas. Misma cabeza y mismo diámetro, **distinta cuerda y distinta broca**.
+
+| Operación | #10-32 (UNF, fina) | #10-24 (UNC, gruesa) |
+|---|---|---|
+| Identificar la cuerda | 32 hilos por pulgada (paso 0.031"). Usa peine de roscas o compara con un tornillo conocido; si no entra al machuelo sin forzar, para | 24 hilos por pulgada (paso 0.042"). Hilos visiblemente más separados |
+| Agujero de paso (Machinery's Handbook) | Close: #9 (0.196") · Free: #5 (0.206") | Igual: close #9 (0.196") · free #5 (0.206") |
+| Broca para machuelo (tap drill) | **#21** (0.159") | **#25** (0.150") |
+| Tipo de machuelo | Taper (punta cónica) para iniciar; plug para continuar; **bottoming** solo en agujero ciego, después del plug. Aluminio, agujero pasado: **machuelo de espiral (spiral point)** que empuja la viruta hacia adelante | Igual |
+| Lubricante | Aceite de corte o WD-40 (aluminio) | Igual |
+| Llave Allen | Socket: **5/32"** · Button: **1/8"** · Flat: **1/8"** | Igual |
+| Avellanado (flat head) | Avellanador de **82°**; diámetro de avellanado ≈0.38-0.39" (9.7-9.9 mm). **Verifica** con el tornillo real: la cabeza debe quedar al ras o 0.01" abajo | Igual |
+| Largo mínimo de rosca en aluminio | ≥1.5×D = 0.29" (7 mm); idealmente 2×D = 0.38" (9.7 mm) | Igual; la cuerda gruesa es más débil en aluminio blando, prefiere 2×D |
+| Cuándo mejor tuerca o inserto | Lámina o pared **<0.125" (3.2 mm)**: la rosca no aguanta, usa tuerca (nyloc o con arandela). Rosca que se va a quitar y poner muchas veces, o aluminio blando: inserto (Helicoil o similar) | Igual |
+
+**[Fabricante]** broca de paso y de machuelo: Machinery's Handbook y tablas del fabricante del machuelo. **[Buena práctica]** tipo de machuelo, lubricante y largo de rosca. Llaves Allen: ASME B18.3 (cabeza socket 5/32"; button y flat 1/8" para #10), confirmado en fichas de proveedores; verifica con el tornillo que compres. El avellanado exacto **no se pudo confirmar**: prueba en un retal.
+
+### Qué taladro usar
+
+- **Taladro de banco** para todo agujero que se va a machuelar: queda perpendicular y la rosca sale recta.
+- **Taladro de mano** solo para agujeros de paso en piezas grandes que no caben en el banco, con la pieza bien sujeta.
+
+Secuencia:
+
+1. Punto de centro (center punch) en la marca.
+2. Broca piloto (1/8" aprox.) si el agujero final es mayor a 1/4".
+3. Broca final (de paso o de machuelo, según la tabla).
+4. Desbarbar los dos lados (avellanador o broca grande girada a mano).
+5. Machuelar recto: usa la guía del taladro de banco (punto de centro en el mandril) o una escuadra; gira **1/2 vuelta adelante y 1/4 atrás**, con lubricante.
+6. Limpia la viruta y prueba con el tornillo real.
+
+### Errores comunes con la tornillería #10
+
+- Usar la broca de 10-32 (#21) con un tornillo 10-24 (o al revés): rosca floja o machuelo forzado. Revisa los hilos por pulgada antes.
+- Machuelar chueco por hacerlo a mano sin guía; el tornillo se atora o queda inclinado.
+- Romper el machuelo en un agujero ciego: usa bottoming al final, retrocede seguido y deja espacio de viruta al fondo. Un machuelo roto no se saca con un adulto ausente: avisa.
+- Llave Allen equivocada (5/32" en un button) que redondea el hexágono.
+- Rosca en lámina delgada (<0.125"): se barre al apretar; usa tuerca.
+
 ## Leyenda
 
 - **[FIRST]** requisito del manual FRC 2026, con su número de regla.
@@ -155,6 +195,8 @@ Notas:
 | 1/2-20 UNF | 29/64" | 0.453 |
 
 Valores de búsqueda con varias fuentes de tablas de brocas; **confirma en la tabla del fabricante del machuelo** antes de taladrar.
+
+Para los tornillos #10 del equipo, ve la **Tarjeta rápida: tornillería #10** al inicio de esta guía.
 
 Nota: #10-24 UNC y #10-32 UNF tienen el mismo diámetro exterior y **brocas distintas** (#25 y #21). Revisa el paso (hilos por pulgada) antes de elegir la broca.
 
@@ -357,13 +399,57 @@ Estas máquinas no se usan sin formación formal y un adulto presente. Aquí sol
 | Riesgos y EPP | Fresa que gira; viruta afilada; pieza que se mueve; cabello y guantes atrapados; lentes; **sin guantes en la máquina** |
 | Quién puede usarla | Solo con formación formal y adulto presente |
 
-### Torno (lathe), introducción
+### Torno básico de velocidad fija (carburo)
 
-- Hace piezas redondas: ejes, bujes, espaciadores.
-- Riesgos: el mandril y la pieza giran a alta velocidad; atrapamiento de cabello, guantes y ropa; viruta caliente y afilada.
-- **[Buena práctica]** Nunca dejes la llave del mandril puesta. Quítala antes de encender.
-- Mide con el calibrador con la máquina parada.
-- Quién puede usarlo: solo con formación formal y adulto presente.
+El torno del equipo es básico: **RPM fijas** (no se cambian) y herramienta de **carburo**, usado para aluminio. Riesgos: el mandril y la pieza giran; atrapamiento de cabello, guantes y ropa; viruta caliente y afilada. Solo con formación formal y adulto presente.
+
+| Sí hacemos | No hacemos |
+|---|---|
+| Refrentar (facing) y cilindrar (turning) | Piezas largas y delgadas sin contrapunto |
+| Separadores (spacers) y bujes | Cortes pesados o desbaste agresivo |
+| Rebajar ejes (reducir diámetro) | Roscar a mano con la máquina girando |
+| Chaflanes | Acero endurecido o materiales desconocidos |
+| Ranurar con cuidado, poco avance | Lijar o limar con la máquina sin supervisión directa del adulto |
+| Taladrar al centro: broca de centro y luego broca, desde el contrapunto | Cualquier operación que el adulto no haya autorizado |
+
+**Trabajar sin cambiar RPM.** **[Buena práctica]** El carburo quiere velocidad superficial alta. Con RPM fijas, en diámetros pequeños funciona bien y en diámetros grandes la velocidad en el borde sube mucho (la pieza vibra, la viruta se pega): no tornees diámetros grandes sin que el adulto lo apruebe. Como no puedes cambiar RPM, controlas con **avance** y **profundidad de corte**.
+
+Valores de partida para aluminio (orientativo, ajusta con el adulto y una prueba en retal):
+
+| Pasada | Profundidad de corte | Avance por vuelta |
+|---|---|---|
+| Desbaste | 0.020-0.040" (0.5-1.0 mm) | 0.004-0.008"/rev (0.10-0.20 mm/rev) |
+| Acabado | 0.005-0.010" (0.13-0.25 mm) | 0.002-0.004"/rev (0.05-0.10 mm/rev) |
+
+Recuerda que la profundidad de corte quita el doble del diámetro: 0.020" de corte reduce 0.040" el diámetro.
+
+Reglas de montaje y herramienta:
+
+- **Altura al centro:** la punta de la herramienta a la altura exacta del centro de la pieza. Si está baja o alta, el corte es malo y la pieza puede "subirse".
+- **Saliente mínimo:** **[Buena práctica]** sin contrapunto, la pieza sale del mandril **≤3× su diámetro**. Más largo: usa contrapunto.
+- **Insertos para aluminio:** **[Fabricante]** (Sandvik y otros) insertos **pulidos (ground), de ángulo positivo, sin recubrimiento o PVD**, por ejemplo tipo CCGT o DCGT. Los insertos para acero dejan aluminio pegado. El adulto elige el inserto.
+- **Lubricante:** WD-40 o alcohol isopropílico con brocha o spray corto. Evita que la viruta se suelde al filo (BUE, built-up edge).
+- **Viruta:** busca viruta que se rompa en rizos cortos; avance muy bajo hace viruta larga que enreda. Retírala con gancho o cepillo, **nunca con la mano** y con la máquina parada.
+
+Seguridad:
+
+- Mide **solo con la máquina parada** (calibrador).
+- **Nunca dejes la llave del mandril puesta.** Quítala antes de encender.
+- Sin guantes, sin mangas sueltas, cabello recogido, lentes de seguridad.
+- Paro de emergencia a la mano; el adulto a la vista.
+
+Checklist de arranque del torno:
+
+- [ ] Inducción firmada y adulto presente.
+- [ ] Lentes puestos, cabello recogido, sin guantes ni joyas.
+- [ ] Pieza apretada en el mandril, saliente ≤3× el diámetro (o contrapunto).
+- [ ] Llave del mandril fuera y guardada.
+- [ ] Herramienta a la altura del centro y bien apretada.
+- [ ] Gira la pieza a mano una vuelta: nada choca.
+- [ ] Inserto correcto para aluminio y sin filo roto.
+- [ ] Avance y profundidad de partida definidos con el adulto.
+- [ ] Lubricante listo; sin trapos ni herramientas sobre la bancada.
+- [ ] Sabes dónde está el paro de emergencia.
 
 ### Router CNC
 
