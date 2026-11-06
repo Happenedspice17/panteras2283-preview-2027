@@ -3,18 +3,17 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Source+Sans+3:wght@400;600&family=JetBrains+Mono:wght@500&display=swap">
 <style>
-/* Layout: manual de pits — cabecera con número de equipo, índice de grupos, fichas por sitio en dos columnas */
+/* Panteras 2283: negro predominante, blanco como highlight. Layout: manual de pits — cabecera con número de equipo, índice de grupos, fichas por sitio en dos columnas */
 :root{
-  --bg:#f3f4f7;--panel:#ffffff;--ink:#141a2b;--muted:#5a6275;--line:#dde0e8;
-  --accent:#1d3fbf;--accent-soft:#e6ebfb;--gold:#b7791f;--ok:#17804a;--ok-soft:#e3f4ea;
+  --bg:#000000;--panel:#0e0e0e;--ink:#f5f5f5;--muted:#9a9a9a;--line:#2a2a2a;
+  --accent:#ffffff;--accent-soft:#1f1f1f;--gold:#fbbf24;--ok:#4ade80;--ok-soft:#10261a;
   --display:'Barlow Condensed','Arial Narrow',sans-serif;--body:'Source Sans 3',system-ui,sans-serif;--mono:'JetBrains Mono',ui-monospace,monospace;
+  color-scheme:dark;
 }
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e1220;--panel:#161b2c;--ink:#e7e9f1;--muted:#9aa1b5;--line:#272e44;--accent:#7d9bff;--accent-soft:#1d2645;--gold:#e0a54a;--ok:#5fcf8e;--ok-soft:#163324;color-scheme:dark}}
-:root[data-theme="dark"]{--bg:#0e1220;--panel:#161b2c;--ink:#e7e9f1;--muted:#9aa1b5;--line:#272e44;--accent:#7d9bff;--accent-soft:#1d2645;--gold:#e0a54a;--ok:#5fcf8e;--ok-soft:#163324;color-scheme:dark}
 *{box-sizing:border-box}
 body{background:var(--bg);color:var(--ink);font:16px/1.55 var(--body)}
 .wrap{max-width:1080px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:28px 48px}
-header{display:grid;grid-template-columns:auto 1fr;gap:20px;align-items:end;border-bottom:3px solid var(--ink);padding-bottom:18px}
+header{display:grid;grid-template-columns:auto 1fr;gap:20px;align-items:end;border-bottom:3px solid var(--accent);padding-bottom:18px}
 .num{font:700 clamp(3.2rem,11vw,6rem)/.85 var(--display);color:var(--accent);letter-spacing:-.01em}
 h1{font:700 clamp(1.6rem,4.5vw,2.4rem)/1.05 var(--display);margin:0;text-transform:uppercase;letter-spacing:.02em;text-wrap:balance}
 .sub{color:var(--muted);margin:6px 0 0;max-width:60ch}
@@ -34,7 +33,7 @@ h2{font:700 1.5rem/1.1 var(--display);text-transform:uppercase;letter-spacing:.0
 .top{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}
 .card h3{margin:0;font:600 1.05rem/1.25 var(--body)}
 .tag{font:500 .68rem var(--mono);text-transform:uppercase;letter-spacing:.06em;padding:3px 7px;border-radius:3px;white-space:nowrap}
-.tag.of{background:var(--accent-soft);color:var(--accent)}.tag.co{background:var(--ok-soft);color:var(--ok)}
+.tag.of{background:var(--accent);color:var(--bg)}.tag.co{background:var(--ok-soft);color:var(--ok)}
 .url{font:500 .78rem var(--mono);color:var(--accent);word-break:break-all;text-decoration:none}
 .url:hover{text-decoration:underline}
 dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:4px 10px;font-size:.92rem}
