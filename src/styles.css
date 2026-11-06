@@ -56,3 +56,9 @@ input[type=checkbox] { width: auto; }
   .menu-btn { display: inline-block; margin-bottom: 12px; }
   .main { padding: 16px; }
 }
+.md { line-height: 1.6; max-width: 900px; }
+.md h1 { margin-bottom: 8px; } .md h2 { margin: 28px 0 8px; font-size: 1.2rem; } .md h3 { margin: 18px 0 6px; font-size: 1rem; }
+.md table { margin: 8px 0 16px; display: block; overflow-x: auto; }
+.md code { background: var(--bg); padding: 1px 5px; border-radius: 4px; }
+.md blockquote { border-left: 4px solid var(--warn); margin: 8px 0; padding: 4px 12px; color: var(--muted); }
+.md li { margin: 3px 0; }

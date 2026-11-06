@@ -18,11 +18,12 @@ import Bom from './modules/bom'
 import Memoria from './modules/memoria'
 import Reporte from './modules/reporte'
 import Recursos from './modules/recursos'
+import Guias from './modules/guias'
 
 const NAV: { group: string; items: [string, string][] }[] = [
   { group: 'Temporada', items: [['/', 'Tablero'], ['/temporada', 'Arranque y objetivos'], ['/calendario', 'Calendario'], ['/eventos', 'Eventos']] },
   { group: 'Personas', items: [['/equipo', 'Equipo y roles'], ['/practicas', 'Prácticas'], ['/formacion', 'Formación'], ['/asistentes', 'Asistentes IA'], ['/asesorias', 'Asesorías']] },
-  { group: 'Recursos', items: [['/bom', 'BOM e inventario'], ['/memoria', 'Memoria del equipo'], ['/reporte', 'Reporte patrocinadores'], ['/recursos', 'Guía FIRST / FRC']] },
+  { group: 'Recursos', items: [['/guias', 'Guías de diseño'], ['/bom', 'BOM e inventario'], ['/memoria', 'Memoria del equipo'], ['/reporte', 'Reporte patrocinadores'], ['/recursos', 'Guía FIRST / FRC']] },
 ]
 
 export default function App() {
@@ -75,6 +76,7 @@ export default function App() {
           <Route path="/bom" element={<Bom />} />
           <Route path="/memoria" element={<Memoria />} />
           <Route path="/reporte" element={<Reporte />} />
+          <Route path="/guias" element={<Guias />} />
           <Route path="/recursos" element={<Recursos />} />
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
