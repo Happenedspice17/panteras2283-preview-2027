@@ -71,6 +71,7 @@ export default function App() {
         <nav className="quick" aria-label="Reglas de diseño">
           <span className="quick-label">Reglas de diseño</span>
           {GUIAS.map(([id, t]) => <NavLink key={id} to={`/guias/${id}`}>{t}</NavLink>)}
+          <a href={`${import.meta.env.BASE_URL}laminas.html`} target="_blank" rel="noopener">🖨 Láminas</a>
         </nav>
         <Routes>
           <Route path="/" element={<Dashboard />} />
