@@ -1,0 +1,4 @@
+Política del equipo: solo cuenta el manual FRC vigente.
+- Vigente hoy: 2026. Al salir 2027 (9 ene 2027) se reemplaza todo [FIRST] por 2027.
+- Si algo estaba prohibido un año anterior y el vigente no lo prohíbe o no lo menciona, es legal.
+- Para actualizar: extraer la sección 8 del manual nuevo, regenerar reglas-frc.md y re-citar los [FIRST] de las guías.
