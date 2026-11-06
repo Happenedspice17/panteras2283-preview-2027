@@ -8,6 +8,8 @@ body{margin:0;background:#2a2a2a;font-family:system-ui,-apple-system,"Segoe UI",
 .bar .sw{background:#333;color:#fff;border:2px solid #fff;margin-right:10px}.bar .sw[aria-pressed=true]{background:#fff;color:#000}
 .bar button{background:#fff;color:#000;border:0;border-radius:6px;padding:8px 18px;font-size:15px;font-weight:700;cursor:pointer}
 .pages{padding:70px 0 30px}
+@media(max-width:520px){.bar span{display:none}.bar b{font-size:12px;white-space:nowrap}.bar button{padding:6px 10px;font-size:13px}.bar .sw{margin-right:6px}}
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
 .hoja{width:8.5in;height:11in;margin:0 auto 26px;background:#fff;box-shadow:0 6px 30px rgba(0,0,0,.6);display:flex;flex-direction:column;overflow:hidden;position:relative;page-break-after:always;break-after:page}
 .hd{background:#000;color:#fff;height:66px;flex:none;display:flex;align-items:center;gap:12px;padding:0 .4in}
 .hd .br{font-weight:800;letter-spacing:.14em;font-size:13pt;border-right:2px solid #fff;padding-right:14px;white-space:nowrap}
@@ -19,6 +21,9 @@ main{gap:11px}
 main{--fs:11pt;flex:1;min-height:0;padding:.22in .4in .18in;overflow:hidden;display:flex;flex-direction:column;gap:9px}
 .lead{margin:0;font-size:12pt;font-weight:700;border-left:7px solid #000;padding:2px 0 2px 10px;line-height:1.2}
 .dg{display:block;flex:none}
+main>*{zoom:var(--z,1)}
+.cover>*{zoom:var(--z,1)}
+
 .dg text{font-family:inherit}
 .tl{paint-order:stroke;stroke:#fff;stroke-width:3.5px;stroke-linejoin:round}
 .dm{stroke:var(--blu);stroke-width:1.8}.ex{stroke:var(--blu);stroke-width:1}
@@ -178,9 +183,9 @@ body.bn .hoja{filter:grayscale(1)}
 <path d="M60 230 L240 230 L240 262 L60 262 Z" fill="none"/>
 <path d="M50 60 L50 220 Q50 262 92 262 L330 262 L330 230 L98 230 Q82 230 82 214 L82 60 Z" fill="url(#alu)" stroke="#111" stroke-width="2.5"/>
 <g><line x1="330" y1="0" x2="330" y2="0" class="dm" marker-start="url(#ar)" marker-end="url(#ar)"/><text x="330" y="-6" font-size="13.5" font-weight="700" text-anchor="middle" fill="#111" class="tl" ></text></g>
-<g><line x1="344" y1="230" x2="344" y2="262" class="dm" marker-start="url(#ar)" marker-end="url(#ar)"/><text x="351" y="251" font-size="13.5" font-weight="700" text-anchor="start" fill="#111" class="tl" >t = espesor</text></g>
+<g><line x1="344" y1="230" x2="344" y2="262" class="dm" marker-start="url(#ar)" marker-end="url(#ar)"/><text x="345" y="278" font-size="13.5" font-weight="700" text-anchor="end" fill="#111" class="tl" >t = espesor</text></g>
 <text x="100" y="205" font-size="13.5" font-weight="700" text-anchor="start" fill="#111" class="tl" >r interior</text><path d="M96 210 Q92 224 98 228" fill="none" stroke="#111" stroke-width="1.5"/>
-<g><line x1="30" y1="60" x2="30" y2="220" class="dm" marker-start="url(#ar)" marker-end="url(#ar)"/><text x="24" y="145" font-size="13" font-weight="700" text-anchor="end" fill="#111" class="tl" >pestaña ≥ 4t + r</text></g>
+<g><line x1="30" y1="60" x2="30" y2="220" class="dm" marker-start="url(#ar)" marker-end="url(#ar)"/><text x="16" y="145" font-size="13" font-weight="700" text-anchor="middle" fill="#111" class="tl" transform="rotate(-90 16 145)">pestaña ≥ 4t + r</text></g>
 <text x="8" y="300" font-size="14" font-weight="700" text-anchor="start" fill="#111" class="tl" >5052-H32: r = 1×t. Un solo radio por pieza.</text>
 <text x="8" y="320" font-size="14"  text-anchor="start" fill="#111" class="tl" >Dobla perpendicular a la veta.</text>
 <text x="420" y="20" font-size="14.5" font-weight="700" text-anchor="start" fill="#111" class="tl" >PATRÓN PLANO</text>
@@ -340,4 +345,7 @@ body.bn .hoja{filter:grayscale(1)}
 <div style="display:grid;gap:9px"><div class="box info"><h3>Potencia y cableado</h3><div class="bb"><ul class="chk"><li>Batería única 12 V, 17-18.2 Ah, sujeta y con bornes aislados <span class="tg f">FIRST · R601-R607 2026</span></li><li>Cargador con SB y ≤ 6 A <span class="tg f">FIRST · R603-R604 2026</span></li><li>Breaker 120 A accesible; cable principal 6 AWG <span class="tg f">FIRST · R609, R612 2026</span></li><li>Un cable por terminal del PD; breakers y fusibles permitidos <span class="tg f">FIRST · R618-R620 2026</span></li><li>Calibres Tabla 8-4; colores rojo/negro <span class="tg f">FIRST · R622, R624 2026</span></li><li>Frame aislado: &gt; 120 Ω <span class="tg f">FIRST · R611 2026</span></li><li>Tirón de prueba hecho; todo etiquetado</li></ul></div></div>
 <div class="box info"><h3>Control y red</h3><div class="bb"><ul class="chk"><li>roboRIO y radio en canales de 10 A <span class="tg f">FIRST · R615-R617 2026</span></li><li>Radio visible; RSL visible a 36 in; sin wireless extra <span class="tg f">FIRST · R707-R709 2026</span></li><li>CAN en cadena, terminado, IDs únicos <span class="tg m">Fabricante</span></li><li>Robot probado sobre bloques</li></ul></div></div>
 <div class="box info"><h3>Neumática (si hay)</h3><div class="bb"><ul class="chk"><li>Alivio 125 psi, almacenamiento ≤ 120 psi, trabajo ≤ 60 psi; manómetros y vent plug visibles <span class="tg f">FIRST · R805-R813 2026</span></li></ul></div></div></div></div>
-<div class="box"><h3>Antes de salir</h3><div class="bb"><ul class="chk" style="columns:2"><li>Revisamos las reglas contra el manual vigente (FRC 2026)</li><li>Dudas anotadas para el LRI (R406, tabla 8-2 HD Hex, calibre roboRIO)</li></ul></div></div></main><footer class="ft"><span>Manual FRC 2026 vigente · verificar con el de 2027 al salir (9 ene 2027)</span><b>Lámina 17 de 17</b></footer></section></div></body></html>
+<div class="box"><h3>Antes de salir</h3><div class="bb"><ul class="chk" style="columns:2"><li>Revisamos las reglas contra el manual vigente (FRC 2026)</li><li>Dudas anotadas para el LRI (R406, tabla 8-2 HD Hex, calibre roboRIO)</li></ul></div></div></main><footer class="ft"><span>Manual FRC 2026 vigente · verificar con el de 2027 al salir (9 ene 2027)</span><b>Lámina 17 de 17</b></footer></section></div><script>
+function fit(){document.querySelectorAll('.hoja main').forEach(function(m){var z=1;m.style.setProperty('--z',1);while(m.scrollHeight>m.clientHeight+1&&z>0.6){z-=0.02;m.style.setProperty('--z',z)}})}
+window.addEventListener('load',fit);if(document.fonts)document.fonts.ready.then(fit);window.addEventListener('beforeprint',fit);window.addEventListener('resize',fit);fit();
+</script></body></html>
