@@ -355,3 +355,22 @@ begin
     'asesorias_realizadas', (select count(*) from mentoring where status = 'realizada')
   ) end);
 end $$;
+
+-- ───────── Límite diario de asistentes IA ─────────
+create table asistente_uso (
+  user_id uuid references profiles on delete cascade,
+  day date not null default current_date,
+  n int not null default 0,
+  primary key (user_id, day)
+);
+alter table asistente_uso enable row level security;
+create policy "uso_read_own" on asistente_uso for select using (user_id = auth.uid() or is_coach());
+
+create function asistente_tick(p_max int default 40) returns boolean language plpgsql security definer set search_path = public as $$
+declare v int;
+begin
+  insert into asistente_uso (user_id, n) values (auth.uid(), 1)
+    on conflict (user_id, day) do update set n = asistente_uso.n + 1
+    returning n into v;
+  return v <= p_max;
+end $$;
