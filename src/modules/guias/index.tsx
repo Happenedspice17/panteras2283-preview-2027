@@ -38,7 +38,7 @@ export default function Guias() {
 
   return (
     <Page title={g?.title ?? "Reglas de diseño"} actions={<Input placeholder="Buscar en todas las guías…" value={q} onChange={(e) => setQ(e.target.value)} />}>
-      <p className="muted small">
+      <p className="muted small legend-guias">
         <span className="badge badge-info">FIRST</span> regla del manual (verificar cada año) ·{' '}
         <span className="badge badge-warn">Fabricante</span> recomendación del fabricante ·{' '}
         <span className="badge badge-ok">Buena práctica</span> práctica común de equipos

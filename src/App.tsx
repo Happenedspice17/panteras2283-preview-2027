@@ -50,6 +50,11 @@ export default function App() {
 
   return (
     <div className="layout">
+      <header className="topbar">
+        <button className="btn btn-ghost" aria-label="Abrir menú" onClick={() => setOpen(true)}>☰</button>
+        <b>Forja · 2283</b>
+      </header>
+      <div className={`backdrop ${open ? 'open' : ''}`} onClick={() => setOpen(false)} />
       <aside className={`sidebar ${open ? 'open' : ''}`} onClick={() => setOpen(false)}>
         <div className="brand">Forja · Panteras 2283<small>{profile.full_name} · {ROLE_LABEL[profile.role]}</small></div>
         <nav className="nav">
@@ -63,7 +68,6 @@ export default function App() {
         <div style={{ padding: 10 }}><button className="btn btn-ghost" onClick={signOut}>Salir</button></div>
       </aside>
       <main className="main">
-        <button className="btn btn-ghost menu-btn" onClick={() => setOpen(!open)}>☰ Menú</button>
         <nav className="quick" aria-label="Reglas de diseño">
           <span className="quick-label">Reglas de diseño</span>
           {GUIAS.map(([id, t]) => <NavLink key={id} to={`/guias/${id}`}>{t}</NavLink>)}
