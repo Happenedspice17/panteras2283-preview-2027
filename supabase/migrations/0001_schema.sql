@@ -374,3 +374,6 @@ begin
     returning n into v;
   return v <= p_max;
 end $$;
+
+-- cualquier miembro puede palomear el checklist de pits
+create policy "pit_member_update" on pit_checklist for update using (is_member()) with check (is_member());
