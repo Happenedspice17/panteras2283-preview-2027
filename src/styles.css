@@ -113,3 +113,5 @@ body { padding-bottom: env(safe-area-inset-bottom); }
   .legend-guias { font-size: .75rem; }
   .md pre { margin: 0 -14px; border-radius: 0; }
 }
+.md pre { position: relative; white-space: pre-wrap; padding-top: 36px; }
+.copy-btn { position: absolute; top: 6px; right: 6px; padding: 4px 10px; min-height: 0; font-size: .8rem; }

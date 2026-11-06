@@ -28,5 +28,5 @@ export const PART_STATUS = ['pendiente', 'pedido', 'recibido', 'en_inventario'] 
 
 export const GUIAS: [string, string][] = [
   ['reglas-frc', 'Reglamento vigente'], ['diseno-robot', 'Diseño del robot'], ['manufactura', 'Manufactura'], ['taller', 'Taller'],
-  ['electronica', 'Electrónica'], ['motores-controladores', 'Motores'],
+  ['electronica', 'Electrónica'], ['motores-controladores', 'Motores'], ['prompts', 'Prompts IA'],
 ]

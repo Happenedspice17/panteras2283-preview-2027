@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { marked } from 'marked'
 import { useNavigate, useParams } from 'react-router-dom'
 import { Page, Input } from '../../components/ui'
@@ -22,6 +22,7 @@ export default function Guias() {
   const nav = useNavigate()
   const setSel = (id: string) => nav(`/guias/${id}`)
   const [q, setQ] = useState('')
+  const ref = useRef<HTMLElement>(null)
   const g = guias.find((x) => x.id === sel) ?? guias[0]
 
   const html = useMemo(() => {
@@ -31,6 +32,19 @@ export default function Guias() {
     h = h.replace(/<a /g, '<a target="_blank" rel="noopener" ')
     return h
   }, [g])
+
+  useEffect(() => {
+    ref.current?.querySelectorAll('pre').forEach((pre) => {
+      const b = document.createElement('button')
+      b.className = 'btn btn-ghost copy-btn'
+      b.textContent = 'Copiar'
+      b.onclick = async () => {
+        try { await navigator.clipboard.writeText((pre.querySelector('code') ?? pre).textContent?.trim() ?? ''); b.textContent = 'Copiado' } catch { b.textContent = 'Selecciona y copia' }
+        setTimeout(() => (b.textContent = 'Copiar'), 1500)
+      }
+      pre.append(b)
+    })
+  }, [html])
 
   const hits = q.length > 2
     ? guias.flatMap((x) => x.md.split('\n').filter((l) => l.toLowerCase().includes(q.toLowerCase())).slice(0, 5).map((l) => ({ id: x.id, title: x.title, l })))
@@ -52,7 +66,7 @@ export default function Guias() {
           ))}
         </div>
       )}
-      {g ? <article className="card md" dangerouslySetInnerHTML={{ __html: html }} /> : <p className="empty">Sin guías.</p>}
+      {g ? <article ref={ref} className="card md" dangerouslySetInnerHTML={{ __html: html }} /> : <p className="empty">Sin guías.</p>}
     </Page>
   )
 }
