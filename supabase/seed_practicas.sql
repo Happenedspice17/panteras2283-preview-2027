@@ -1,6 +1,6 @@
 -- Plan de pretemporada: 5 áreas x 3 niveles x 4 prácticas (60 filas).
 -- Rúbrica: un criterio por línea. Recursos: 'Título | URL' por línea.
--- Idempotente: reemplaza solo prácticas con el mismo area/level/week/title.
+-- Ejecutar una sola vez (no es idempotente): si ya hay prácticas, limpiar antes con delete from practices.
 insert into practices (area, level, week, title, objective, deliverable, rubric, resources) values
   ('estrategia', 'basico', 1, 'Lectura guiada del manual del juego', 'Entender reglas de puntuación, ciclos de partido y restricciones del robot.', 'Resumen de 1 página con puntos por acción, fases del partido y 5 reglas críticas.', 'Cita la sección del manual de cada regla
 Incluye valores de puntos correctos
