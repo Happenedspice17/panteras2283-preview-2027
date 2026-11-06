@@ -7,7 +7,7 @@ body{margin:0;background:#2a2a2a;font-family:system-ui,-apple-system,"Segoe UI",
 .bar b{letter-spacing:.12em;font-size:15px}.bar span{font-size:13px;opacity:.8;margin-left:12px}
 .bar .sw{background:#333;color:#fff;border:2px solid #fff;margin-right:10px}.bar .sw[aria-pressed=true]{background:#fff;color:#000}
 .bar button{background:#fff;color:#000;border:0;border-radius:6px;padding:8px 18px;font-size:15px;font-weight:700;cursor:pointer}
-.pages{padding:70px 0 30px}
+.pages{padding:70px 0 30px;overflow:hidden}
 @media(max-width:520px){.bar span{display:none}.bar b{font-size:12px;white-space:nowrap}.bar button{padding:6px 10px;font-size:13px}.bar .sw{margin-right:6px}}
 html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
 .hoja{width:8.5in;height:11in;margin:0 auto 26px;background:#fff;box-shadow:0 6px 30px rgba(0,0,0,.6);display:flex;flex-direction:column;overflow:hidden;position:relative;page-break-after:always;break-after:page}
@@ -21,8 +21,6 @@ main{gap:11px}
 main{--fs:11pt;flex:1;min-height:0;padding:.22in .4in .18in;overflow:hidden;display:flex;flex-direction:column;gap:9px}
 .lead{margin:0;font-size:12pt;font-weight:700;border-left:7px solid #000;padding:2px 0 2px 10px;line-height:1.2}
 .dg{display:block;flex:none}
-main>*{zoom:var(--z,1)}
-.cover>*{zoom:var(--z,1)}
 
 .dg text{font-family:inherit}
 .tl{paint-order:stroke;stroke:#fff;stroke-width:3.5px;stroke-linejoin:round}
@@ -62,17 +60,11 @@ main>*{zoom:var(--z,1)}
 .cover li a{display:flex;gap:9px;align-items:center;color:#000;text-decoration:none;font-size:11pt;font-weight:600;padding:2px 0;border-bottom:1px dotted #888}
 .cover li b{flex:none;width:28px;height:28px;border-radius:50%;background:#000;color:#fff;text-align:center;line-height:28px;font-size:11pt}
 body.bn .hoja{filter:grayscale(1)}
-@media(max-width:820px){.hoja{zoom:.95}}
-@media(max-width:700px){.hoja{zoom:.82}}
-@media(max-width:600px){.hoja{zoom:.7}}
-@media(max-width:500px){.hoja{zoom:.58}}
-@media(max-width:420px){.hoja{zoom:.47}}
-@media(max-width:340px){.hoja{zoom:.38}}
 @media print{
  @page{size:letter;margin:0}
  html,body{background:#fff!important}
  .bar{display:none!important}.pages{padding:0!important}
- .hoja{zoom:1!important;margin:0!important;box-shadow:none!important;page-break-after:always;break-after:page}
+ .hoja{zoom:1!important;transform:none!important;margin:0!important;box-shadow:none!important;page-break-after:always;break-after:page}
  .hoja:last-child{page-break-after:auto;break-after:auto}
  body.bn .hoja{filter:grayscale(1)}
 }
@@ -261,7 +253,7 @@ body.bn .hoja{filter:grayscale(1)}
 <rect x="330" y="125" width="170" height="60" fill="#e3e3e3" stroke="#111" stroke-width="2.5"/><line x1="330" y1="132" x2="500" y2="132" stroke="#777" stroke-width="1"/><line x1="330" y1="139" x2="500" y2="139" stroke="#777" stroke-width="1"/><line x1="330" y1="146" x2="500" y2="146" stroke="#777" stroke-width="1"/><line x1="330" y1="153" x2="500" y2="153" stroke="#777" stroke-width="1"/><line x1="330" y1="160" x2="500" y2="160" stroke="#777" stroke-width="1"/><line x1="330" y1="167" x2="500" y2="167" stroke="#777" stroke-width="1"/><line x1="330" y1="174" x2="500" y2="174" stroke="#777" stroke-width="1"/><line x1="330" y1="181" x2="500" y2="181" stroke="#777" stroke-width="1"/>
 <rect x="500" y="115" width="18" height="80" fill="#bdbdbd" stroke="#111" stroke-width="2"/>
 <line x1="522" y1="155" x2="560" y2="155" stroke="#1b6e3a" stroke-width="4" marker-end="url(#ak)"/>
-<text x="330" y="100" font-size="14.5" font-weight="700" text-anchor="start" fill="#1b6e3a" class="tl" >✓ Acostada</text><text x="330" y="214" font-size="13.5"  text-anchor="start" fill="#111" class="tl" >la carga va a lo largo de las capas</text>
+<text x="330" y="100" font-size="14.5" font-weight="700" text-anchor="start" fill="#1b6e3a" class="tl" >✓ Acostada</text><text x="330" y="214" font-size="13.5"  text-anchor="start" fill="#111" class="tl" >carga a lo largo de las capas</text>
 <path d="M620 60 L620 150 L700 150 L700 130 L644 130 L644 60 Z" fill="#e3e3e3" stroke="#111" stroke-width="2.5"/>
 <path d="M644 130 Q644 150 620 150" fill="none" stroke="#1b6e3a" stroke-width="3"/>
 <text x="660" y="40" font-size="13.5" font-weight="700" text-anchor="middle" fill="#111" class="tl" >Esquina interna</text><text x="660" y="200" font-size="13.5" font-weight="700" text-anchor="middle" fill="#1b6e3a" class="tl" >con filete ≥ 1-2 mm</text><text x="655" y="218" font-size="13"  text-anchor="middle" fill="#111" class="tl" >esquina viva = se rompe</text>
@@ -346,6 +338,27 @@ body.bn .hoja{filter:grayscale(1)}
 <div class="box info"><h3>Control y red</h3><div class="bb"><ul class="chk"><li>roboRIO y radio en canales de 10 A <span class="tg f">FIRST · R615-R617 2026</span></li><li>Radio visible; RSL visible a 36 in; sin wireless extra <span class="tg f">FIRST · R707-R709 2026</span></li><li>CAN en cadena, terminado, IDs únicos <span class="tg m">Fabricante</span></li><li>Robot probado sobre bloques</li></ul></div></div>
 <div class="box info"><h3>Neumática (si hay)</h3><div class="bb"><ul class="chk"><li>Alivio 125 psi, almacenamiento ≤ 120 psi, trabajo ≤ 60 psi; manómetros y vent plug visibles <span class="tg f">FIRST · R805-R813 2026</span></li></ul></div></div></div></div>
 <div class="box"><h3>Antes de salir</h3><div class="bb"><ul class="chk" style="columns:2"><li>Revisamos las reglas contra el manual vigente (FRC 2026)</li><li>Dudas anotadas para el LRI (R406, tabla 8-2 HD Hex, calibre roboRIO)</li></ul></div></div></main><footer class="ft"><span>Manual FRC 2026 vigente · verificar con el de 2027 al salir (9 ene 2027)</span><b>Lámina 17 de 17</b></footer></section></div><script>
-function fit(){document.querySelectorAll('.hoja main').forEach(function(m){var z=1;m.style.setProperty('--z',1);while(m.scrollHeight>m.clientHeight+1&&z>0.6){z-=0.02;m.style.setProperty('--z',z)}})}
-window.addEventListener('load',fit);if(document.fonts)document.fonts.ready.then(fit);window.addEventListener('beforeprint',fit);window.addEventListener('resize',fit);fit();
+function fit(){
+  document.querySelectorAll('.hoja main').forEach(function(m){
+    var h=m.parentElement,used=0;
+    [].forEach.call(h.children,function(c){if(c!==m)used+=c.offsetHeight});
+    var W=h.clientWidth,H=h.clientHeight-used,z=1;
+    m.style.flex='none';m.style.transformOrigin='0 0';
+    function set(){m.style.width=(W/z)+'px';m.style.height=(H/z)+'px';m.style.transform=z<1?'scale('+z+')':''}
+    set();
+    while(m.scrollHeight>m.clientHeight+1&&z>0.6){z-=0.02;set()}
+  });
+  view();
+}
+function view(){
+  var pr=window.matchMedia&&matchMedia('print').matches;
+  var s=pr?1:Math.min(1,(document.documentElement.clientWidth-16)/816);
+  document.querySelectorAll('.hoja').forEach(function(h){
+    if(s>=1){h.style.transform='';h.style.margin='';return}
+    h.style.transformOrigin='0 0';h.style.transform='scale('+s+')';
+    h.style.margin='0 0 '+(26-1056*(1-s))+'px '+((document.documentElement.clientWidth-816*s)/2)+'px';
+  });
+}
+window.addEventListener('load',fit);if(document.fonts&&document.fonts.ready)document.fonts.ready.then(fit);
+window.addEventListener('resize',view);window.addEventListener('beforeprint',fit);fit();
 </script></body></html>

@@ -115,3 +115,5 @@ body { padding-bottom: env(safe-area-inset-bottom); }
 }
 .md pre { position: relative; white-space: pre-wrap; padding-top: 36px; }
 .copy-btn { position: absolute; top: 6px; right: 6px; padding: 4px 10px; min-height: 0; font-size: .8rem; }
+.laminas-cta{display:block;margin:0 0 12px;padding:12px 14px;border:2px solid var(--accent);border-radius:10px;color:var(--ink);text-decoration:none}
+.laminas-cta:hover{background:var(--accent);color:var(--accent-ink)}

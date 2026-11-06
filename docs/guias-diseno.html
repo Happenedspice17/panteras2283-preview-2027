@@ -22,6 +22,7 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .layout{display:flex;flex-direction:column;gap:20px}
 nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);display:flex;flex-wrap:wrap;gap:6px;padding-block:10px;border-bottom:1px solid var(--line)}
 nav input{flex:1 1 100%}
+nav a.lam{font:700 .85rem var(--body);color:var(--bg);background:var(--accent);border-radius:99px;padding:6px 12px;text-decoration:none}
 .hits{flex:1 1 100%}
 nav button{font:600 .95rem var(--body);background:transparent;color:var(--ink);border:1px solid var(--line);border-radius:99px;padding:8px 14px;cursor:pointer}
 nav button[aria-current="true"]{background:var(--accent);color:var(--bg);border-color:var(--accent)}
@@ -54,7 +55,7 @@ article input[type=checkbox]{accent-color:#fff}
 <header><div class="num">2283</div><div><p class="ttl">Guías de diseño y manufactura</p></div></header>
 <div class="legend"><span class="tag t-first">FIRST</span> regla del manual, se verifica cada temporada <span class="tag t-fab">Fabricante</span> recomendación del fabricante <span class="tag t-bp">Buena práctica</span> práctica común de equipos FRC</div>
 <div class="layout">
-  <nav id="nav"><input id="q" type="search" placeholder="Buscar en todas las guías" aria-label="Buscar"><div id="tabs" style="display:contents"></div><div class="hits" id="hits"></div></nav>
+  <nav id="nav"><input id="q" type="search" placeholder="Buscar en todas las guías" aria-label="Buscar"><div id="tabs" style="display:contents"></div><a class="lam" href="https://claude.ai/artifact/GcrfZj8zWQ1s3QfcGLJmip" target="_blank" rel="noopener">🖨 Láminas para imprimir</a><div class="hits" id="hits"></div></nav>
   <article id="doc"><p class="load">Cargando guía…</p></article>
 </div>
 </div>
