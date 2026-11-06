@@ -1,10 +1,12 @@
 import { useMemo, useState } from 'react'
 import { marked } from 'marked'
+import { useNavigate, useParams } from 'react-router-dom'
 import { Page, Input } from '../../components/ui'
+import { GUIAS } from '../../lib/constants'
 
 const files = import.meta.glob('../../../docs/guias/*.md', { query: '?raw', import: 'default', eager: true }) as Record<string, string>
 
-const ORDER = ['diseno-robot', 'manufactura', 'taller', 'electronica', 'motores-controladores']
+const ORDER = GUIAS.map(([id]) => id)
 
 const guias = Object.entries(files)
   .map(([path, md]) => {
@@ -16,9 +18,11 @@ const guias = Object.entries(files)
 const TAGS: [RegExp, string][] = [[/\[FIRST\]/g, 'info'], [/\[Fabricante\]/g, 'warn'], [/\[Buena práctica\]/g, 'ok']]
 
 export default function Guias() {
-  const [sel, setSel] = useState(guias[0]?.id)
+  const { id: sel } = useParams()
+  const nav = useNavigate()
+  const setSel = (id: string) => nav(`/guias/${id}`)
   const [q, setQ] = useState('')
-  const g = guias.find((x) => x.id === sel)
+  const g = guias.find((x) => x.id === sel) ?? guias[0]
 
   const html = useMemo(() => {
     if (!g) return ''
@@ -33,7 +37,7 @@ export default function Guias() {
     : []
 
   return (
-    <Page title="Guías de diseño" actions={<Input placeholder="Buscar en todas las guías…" value={q} onChange={(e) => setQ(e.target.value)} />}>
+    <Page title={g?.title ?? "Reglas de diseño"} actions={<Input placeholder="Buscar en todas las guías…" value={q} onChange={(e) => setQ(e.target.value)} />}>
       <p className="muted small">
         <span className="badge badge-info">FIRST</span> regla del manual (verificar cada año) ·{' '}
         <span className="badge badge-warn">Fabricante</span> recomendación del fabricante ·{' '}
@@ -48,11 +52,6 @@ export default function Guias() {
           ))}
         </div>
       )}
-      <div className="row" style={{ marginBottom: 12 }}>
-        {guias.map((x) => (
-          <button key={x.id} className={`btn ${x.id === sel ? 'btn-primary' : 'btn-ghost'}`} onClick={() => setSel(x.id)}>{x.title}</button>
-        ))}
-      </div>
       {g ? <article className="card md" dangerouslySetInnerHTML={{ __html: html }} /> : <p className="empty">Sin guías.</p>}
     </Page>
   )

@@ -25,3 +25,8 @@ export const ROLE_LABEL: Record<Role, string> = {
 
 export const PRIORITIES = ['esencial', 'estrategico', 'aspiracional'] as const
 export const PART_STATUS = ['pendiente', 'pedido', 'recibido', 'en_inventario'] as const
+
+export const GUIAS: [string, string][] = [
+  ['diseno-robot', 'Diseño del robot'], ['manufactura', 'Manufactura'], ['taller', 'Taller'],
+  ['electronica', 'Electrónica'], ['motores-controladores', 'Motores'],
+]

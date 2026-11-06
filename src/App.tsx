@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { NavLink, Navigate, Route, Routes } from 'react-router-dom'
 import { useAuth } from './lib/auth'
 import { configured } from './lib/supabase'
-import { ROLE_LABEL } from './lib/constants'
+import { GUIAS, ROLE_LABEL } from './lib/constants'
 import Login from './pages/Login'
 import Setup from './pages/Setup'
 import Dashboard from './modules/dashboard'
@@ -21,9 +21,10 @@ import Recursos from './modules/recursos'
 import Guias from './modules/guias'
 
 const NAV: { group: string; items: [string, string][] }[] = [
+  { group: 'Reglas de diseño', items: GUIAS.map(([id, t]) => [`/guias/${id}`, t]) },
   { group: 'Temporada', items: [['/', 'Tablero'], ['/temporada', 'Arranque y objetivos'], ['/calendario', 'Calendario'], ['/eventos', 'Eventos']] },
   { group: 'Personas', items: [['/equipo', 'Equipo y roles'], ['/practicas', 'Prácticas'], ['/formacion', 'Formación'], ['/asistentes', 'Asistentes IA'], ['/asesorias', 'Asesorías']] },
-  { group: 'Recursos', items: [['/guias', 'Guías de diseño'], ['/bom', 'BOM e inventario'], ['/memoria', 'Memoria del equipo'], ['/reporte', 'Reporte patrocinadores'], ['/recursos', 'Guía FIRST / FRC']] },
+  { group: 'Recursos', items: [['/bom', 'BOM e inventario'], ['/memoria', 'Memoria del equipo'], ['/reporte', 'Reporte patrocinadores'], ['/recursos', 'Guía FIRST / FRC']] },
 ]
 
 export default function App() {
@@ -63,6 +64,10 @@ export default function App() {
       </aside>
       <main className="main">
         <button className="btn btn-ghost menu-btn" onClick={() => setOpen(!open)}>☰ Menú</button>
+        <nav className="quick" aria-label="Reglas de diseño">
+          <span className="quick-label">Reglas de diseño</span>
+          {GUIAS.map(([id, t]) => <NavLink key={id} to={`/guias/${id}`}>{t}</NavLink>)}
+        </nav>
         <Routes>
           <Route path="/" element={<Dashboard />} />
           <Route path="/temporada" element={<Temporada />} />
@@ -76,7 +81,8 @@ export default function App() {
           <Route path="/bom" element={<Bom />} />
           <Route path="/memoria" element={<Memoria />} />
           <Route path="/reporte" element={<Reporte />} />
-          <Route path="/guias" element={<Guias />} />
+          <Route path="/guias" element={<Navigate to="/guias/diseno-robot" />} />
+          <Route path="/guias/:id" element={<Guias />} />
           <Route path="/recursos" element={<Recursos />} />
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
