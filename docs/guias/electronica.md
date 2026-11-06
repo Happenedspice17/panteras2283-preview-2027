@@ -2,7 +2,7 @@
 
 Guía para diseñar, cablear y preparar para inspección la electrónica de un robot FRC del equipo Panteras 2283.
 
-> **Aviso importante (2027).** Las reglas marcadas **[FIRST]** están tomadas de la **Lista de Inspección 2026** (Rev. 0) y de la documentación de WPILib. Cambian cada año. **Verifícalas contra el Manual del Juego 2027 al salir el kickoff (9 ene 2027)**, sobre todo la sección *Robot Construction / Electrical*. En 2027 el sistema de control cambia (ver "SystemCore"); lo que aquí aparece del roboRIO 2 puede dejar de ser legal o relevante.
+> **Manual vigente: FRC 2026.** Las reglas [FIRST] citan el manual 2026; al salir el de 2027 (9 ene 2027) se actualizan y solo cuenta el vigente. Detalle completo en reglas-frc.md.
 
 **Tipos de regla usados:** **[FIRST]** = requisito del manual. **[Fabricante]** = recomendación de REV/CTR/WPILib. **[Buena práctica]** = práctica común de equipos.
 
@@ -28,24 +28,24 @@ roboRIO ──CAN (amarillo/verde)──► dispositivo 1 ─► dispositivo 2 �
 
 | Componente | Qué hace | Notas |
 |---|---|---|
-| Batería | 12V, **17-18.2 Ah**, única, sujeta dentro del robot, ventilación libre **[FIRST]** (R601, R605, R606) | Todas sus conexiones aisladas siempre (R607) |
-| Main breaker 120A | Un solo interruptor entre batería y PD, **rápido y seguro de accionar** **[FIRST]** (R612) | Sirve como "apagado de emergencia" |
-| PD (PDH de REV o PDP de CTR) | Única, con breakers y cableado **fácilmente visibles** **[FIRST]** (R613) | El PDH tiene canales con breaker (ATO/Mini) y canales con fusible (20-22 sin switch) |
-| roboRIO 2 | Computadora del robot | Alimentación **directa** de terminales del PD con **fusible/breaker de 10A** **[FIRST]** (R615) |
-| Radio Vivid Hosting VH-109 (WCP-1538) | Único radio autorizado, con LEDs visibles al personal del campo **[FIRST]** (R702, R707, R708) | Ver sección de radio |
-| RSL (luz de señal) | Máx. 2, visible a 36 in (91 cm) desde al menos un lado, conectada al puerto RSL del roboRIO **[FIRST]** (R709) | Si la frame la tapa, muévela a un lugar visible |
+| Batería | 12V, **17-18.2 Ah**, única, sujeta dentro del robot, ventilación libre **[FIRST]** (R601, R606 2026; R605: ninguna otra batería a bordo) | Todas sus conexiones aisladas siempre **[FIRST]** (R607 2026) |
+| Main breaker 120A | Un solo interruptor entre batería y PD, **rápido y seguro de accionar** **[FIRST]** (R612 2026) | Sirve como "apagado de emergencia" |
+| PD (PDH de REV o PDP de CTR) | Única, con breakers y cableado **fácilmente visibles** **[FIRST]** (R613 2026) | El PDH tiene canales con breaker (ATO/Mini) y canales con fusible (20-22 sin switch) |
+| roboRIO 2 | Computadora del robot | Alimentación **directa** de terminales del PD con **fusible/breaker de 10A**, sin otra carga en ese circuito **[FIRST]** (R615 2026) |
+| Radio Vivid Hosting VH-109 (WCP-1538) | Único radio autorizado, con LEDs visibles al personal del campo **[FIRST]** (R702, R708 2026) | Ver sección de radio |
+| RSL (luz de señal) | Máx. 2, visible a 36 in (91 cm) desde al menos un lado, conectada al puerto RSL del roboRIO **[FIRST]** (R709 2026) | Si la frame la tapa, muévela a un lugar visible |
 
 ### Radio VH-109: alimentación y red
-- **[FIRST]** Alimentación por inyección PoE en el puerto **RIO** del radio y/o directo al **conector de 12V** desde el PD (R616).
-- **[FIRST]** El roboRIO se conecta al puerto **RIO** del radio (VH-109 v1.5, sticker holográfico azul). Con VH-109 v1.0: por inyector PoE, cable Ethernet modificado, o puerto **AUX** con el DIP switch apagado (R703).
+- **[FIRST]** (R616, R617 2026) Alimentación por inyector pasivo/cable modificado en el puerto **RIO** del radio y/o directo al **conector de 12V** desde el PD. El circuito del PD debe tener fusible/breaker de **10A** y ninguna otra carga.
+- **[FIRST]** El roboRIO se conecta al puerto **RIO** del radio (VH-109 v1.5, sticker holográfico azul). Con VH-109 v1.0: por inyector PoE, cable Ethernet modificado, o puerto **AUX 1/2** con el DIP switch apagado (R703 2026).
 - **[Fabricante]** WPILib recomienda alimentar el radio **por dos vías** (12V directo + PoE) para redundancia: si un cable se daña, el radio no se apaga.
 - **[Fabricante]** El adaptador PoE de Vivid está cableado al revés que el de REV; **no sustituyas uno por otro** ni conectes el cable PoE pasivo de REV directo al roboRIO.
 - **[Fabricante]** Usa ferrules en los cables rojo y negro del adaptador PoE en las terminales del PDH. Alimenta el radio desde un canal fusible no conmutable (20-22) con fusible de 10A.
 - **[Buena práctica]** Montaje con aislamiento de vibración (espuma, soportes flexibles). Los LEDs del radio deben verse desde fuera del robot.
-- Verifica en 2027 si el radio sigue siendo el VH-109 o cambia con el nuevo controlador.
+- **[FIRST]** (R626 2026) La salida PoE del VH-109 solo puede alimentar un dispositivo COTS de <= 2 A a 12 V, con cable Cat5e/6/7/8 estándar, estando el VH-109 alimentado por las terminales de 12 V con cable 18 AWG o mayor.
 
 ### Nota sobre VRM y puertos de radio
-El **VRM** (módulo de regulación de voltaje) del sistema anterior (roboRIO 1 + radio OM5P) ya no es parte del sistema vigente 2026: el radio VH-109 se alimenta con 12V directo o PoE. Si ves un VRM en robots viejos del taller, no lo copies sin confirmar su legalidad.
+El **VRM** (módulo de regulación de voltaje) del sistema anterior (roboRIO 1 + radio OM5P) solo se usa en 2026 con radios OM5P (eventos en China, R616-B); con el VH-109 el radio se alimenta con 12V directo o inyector pasivo (R616-A). Si ves un VRM en robots viejos del taller, no lo copies sin confirmar su legalidad.
 
 ### SystemCore (sistema de control 2027)
 - **Qué sabemos (fuentes WPILib):** WPILib describe el cambio del roboRIO a **Systemcore** como "la mayor actualización del sistema de control desde el cRIO". El hardware es el **Limelight Systemcore**, basado en Raspberry Pi Compute Module 5 (CM5), CPU ARM Cortex-A76 de 4 núcleos, con CAN, I2C, USB y Ethernet, E/S reconfigurable (PWM, DIO, analógica), pantalla, LEDs e IMU integrada. Soporta varios buses CAN.
@@ -58,35 +58,38 @@ El **VRM** (módulo de regulación de voltaje) del sistema anterior (roboRIO 1 +
 
 ## 2. Calibres de cable mínimos
 
-**[FIRST]** (R610, R621, R622): un solo breaker/fusible por circuito; el cable mínimo depende del breaker. Valores de la lista de inspección 2026:
+**[FIRST]** (R610, R621, R622 2026): cada circuito sale de un solo breaker/fusible del PD y el cable mínimo depende de la protección (Tabla 8-4):
 
 | Circuito | Protección | Calibre mínimo | Fuente |
 |---|---|---|---|
-| Batería - main breaker - PD | Main breaker 120A | **6 AWG** (16 mm²) | Lista 2026 (R607, R609) |
-| Motores de alta corriente | Breaker **40A** | **12 AWG** (4 mm²) | R621/R622 |
-| Circuitos medios | Breaker **30A** | **14 AWG** (2.5 mm²) | R621/R622 |
-| Circuitos de 20A | Breaker **20A** | **18 AWG** (1 mm²) | R621/R622 |
-| Menos de 20A (fusible 10A, 5A, etc.) | Fusible/breaker pequeño | Según **Tabla 8-4** del manual | Verifica en el manual |
-| CAN / señal | n/a | 22 AWG torcido (estándar WPILib) | [Fabricante] |
+| Batería - main breaker - PD | Main breaker 120A | **6 AWG** (16 mm²) | R609 2026 |
+| Motores de alta corriente (31-40A) | Breaker **40A** | **12 AWG** (4 mm²) | R621/R622 |
+| Circuitos medios (21-30A) | Breaker **30A** | **14 AWG** (2.5 mm²) | R621/R622 |
+| Circuitos de 6-20A (o fusible de 11-20A) | Breaker **20A** | **18 AWG** (1 mm²) | R622 |
+| Breaker <= 5A o fusible <= 10A | Fusible/breaker pequeño | **22 AWG** (0.5 mm²) | R622 |
+| Salidas PWM del roboRIO / circuito con fusible <= 1A | n/a | **26 AWG** | R622 |
+| Circuitos de señal (<= 1A continuo, p. ej. CAN, solenoides PCM/PH) | n/a | **28 AWG** | R622 |
+| CAN (práctica) | n/a | 22 AWG torcido (estándar WPILib; el mínimo legal para señal es 28 AWG) | [Fabricante] |
 
 - **[Buena práctica]** Equipos usan **10 AWG** para motores de 40A para menos caída de voltaje y 4 AWG para la batería (legal ya que 6 AWG es el mínimo). Más grueso es siempre legal; más delgado nunca.
-- **[Buena práctica]** Wiki de equipos (3255, basada en el manual 2026, **no verificada en el manual**): 18 AWG para roboRIO/radio, 22 AWG mínimo para 5A o fusible 10A de sensores pequeños. **Confirma Tabla 8-4.**
-- **[FIRST]** Solo cobre o aluminio revestido de cobre (CCA); la señal queda excluida (R622).
-- **[FIRST]** **Solo 1 cable por terminal WAGO.** Los empalmes o bloques de terminales pueden repartir potencia, pero todos los cables del empalme deben cumplir el calibre del breaker (R618).
+- **[Buena práctica]** Wiki de equipos (3255): 18 AWG para roboRIO/radio y 22 AWG para sensores pequeños con fusible de 10A. La Tabla 8-4 (R622) solo exige 22 AWG para <= 10A de fusible y 18 AWG para 11-20A; los cables que vienen con un dispositivo legal están exentos si usan el fusible más pequeño que permita operarlo.
+- **[FIRST]** (R622 2026) Solo cobre aislado o aluminio revestido de cobre (CCA, se considera cobre); los cables de nivel de señal no tienen que ser de cobre.
+- **[FIRST]** (R618 2026) **Solo 1 cable por terminal del PD.** Para repartir potencia, empalma los cables (bloque de terminales, crimp o soldadura) y mete un solo cable principal a la terminal. Todo el camino eléctrico (empalmes y conectores incluidos) debe estar dimensionado para el circuito (R623).
+- **[Buena práctica]** Un cable por terminal también en los WAGO 221 (recomendación de uso del fabricante).
 - **[Buena práctica]** Si en un conector entran varios cables, súmalos: el calibre efectivo baja alrededor de 3 AWG por cada duplicación del área. Dos cables de 18 AWG equivalen aproximadamente a 15 AWG (wiki 3255).
 
 ## 3. Colores de cable
 
 | Uso | Color | Tipo |
 |---|---|---|
-| Potencia positiva (+24, +12, +5 V) | **Rojo, amarillo, blanco, café, o negro con raya** | **[FIRST]** (R624) |
-| Potencia común (negativo) | **Negro o azul** | **[FIRST]** (R624) |
+| Potencia positiva (+24, +12, +5 V) | **Rojo, amarillo, blanco, café, o negro con raya** (de fábrica, en toda su longitud) | **[FIRST]** (R624 2026) |
+| Potencia común (negativo) | **Negro o azul** | **[FIRST]** (R624 2026) |
 | CAN High | **Amarillo** | [Fabricante] |
 | CAN Low | **Verde** | [Fabricante] |
 | Motor (controlador con cables blanco/verde) | rojo a blanco, negro a verde | [Fabricante] |
 | PWM | negro hacia afuera del roboRIO | [Fabricante] |
 
-- Se exceptúa el cable original del fabricante.
+- **[FIRST]** (R624-C/D) Se exceptúan los cables originales de dispositivos legales (y sus extensiones del mismo color) y el Ethernet de los cables PoE. Las salidas de controladores, relés y sensores y el cableado de señal tampoco se rigen por esta regla.
 - **[Buena práctica]** Usa **rojo = +** y **negro = −** siempre; evita azul/amarillo en potencia para que nadie confunda CAN con potencia.
 - **[Buena práctica]** Etiqueta ambos extremos con banderas (FROM / TO) y mantén una hoja de canales del PD.
 
@@ -121,7 +124,7 @@ El **VRM** (módulo de regulación de voltaje) del sistema anterior (roboRIO 1 +
 |---|---|---|
 | **Anderson SB50** | Batería - robot | Estándar del manual. Sujeta con clip o zip tie. Conecta la batería al lado del robot **al final** **[Fabricante]** |
 | **Anderson Powerpole** | Cargadores, extensiones pequeñas | Crimpa con la herramienta correcta, no con pinzas |
-| **WAGO 221** (palanca) | Motores y sensores | **1 cable por terminal** **[FIRST]** (R618). Pela ~11-12 mm (confirma en el empaque), **no estañes** el cable, levanta la palanca, inserta completo y verifica por la ventana |
+| **WAGO 221** (palanca) | Motores y sensores | **1 cable por terminal** **[Buena práctica]**. Pela ~11-12 mm (confirma en el empaque), **no estañes** el cable, levanta la palanca, inserta completo y verifica por la ventana |
 | **WAGO del PDH/PDP** | Canales del PD | Acepta cable fino sin ferrule según el modelo; no estañar |
 | **Weidmuller** (roboRIO, radio, SystemCore) | Alimentación de controladores | Acepta 16-24 AWG; pela ~8 mm (5/16"); usa **ferrule** |
 | **Ferrules** | Cable multifilar en terminales de tornillo/resorte | Crimpado cuadrado; el hilo sobresale poco del ferrule |
@@ -136,20 +139,22 @@ El **VRM** (módulo de regulación de voltaje) del sistema anterior (roboRIO 1 +
 
 ## 6. Baterías
 
-- **[FIRST]** Una sola batería 12V de **17-18.2 Ah**, sujeta dentro del robot con ventilación libre (R601, R605, R606) y con todas las conexiones aisladas (R607). Los modelos legales exactos se listan en el manual (SLA tipo MK ES17-12, Power Sonic PS-12180 y equivalentes); **verifica la lista vigente**.
+- **[FIRST]** Una sola batería 12V de **17-18.2 Ah**, sujeta dentro del robot con ventilación libre sin obstruir (R601, R606 2026), dimensiones nominales 7.1 x 3.0 x 6.6 in (+/-0.1 in), peso 11.0-14.5 lb, terminales de tuerca y perno, y con todas las conexiones aisladas (R607). El manual da ejemplos (Enersys NP18-12, MK ES17-12, Power Sonic PS-12180NB, Yuasa NP18-12B, etc.) y puede pedirse documentación de otros modelos.
+- **[FIRST]** (R603, R604 2026) El cargador debe tener conector Anderson SB y no puede exceder **6 A** de corriente promedio de carga.
 - **Carga [Buena práctica]:** usa un cargador SLA inteligente de 12V; carga a corriente moderada; no cargues en superficies inflamables ni sin vigilancia; guarda cargada, no descargada a fondo.
 - **Rotación [Fabricante]:** rota las baterías uniformemente para que se carguen, descansen y se desgasten igual. Etiqueta cada una con número y fecha (edad).
 - **Prueba con analizador [Fabricante/Buena práctica]:** mide la **resistencia interna** con un analizador de baterías (p. ej. CBA o similar); predice mejor el rendimiento que el voltaje en vacío. Retira las que muestren resistencia alta.
 - **Daños:** una batería **caída** se marca como mala hasta probarla; el daño en celdas puede no verse en el voltaje **[Fabricante]**. Hinchada, con fuga, caliente o con terminales dañadas: **sácala de uso y avisa al mentor**.
 - **Manejo seguro:** nunca cargues la batería por sus cables (daña las conexiones internas). Aisla terminales al guardar. No hagas corto con herramientas. Lleva siempre lentes al manejarlas y no las expongas a calor.
-- **Baterías extra [FIRST]:** solo USB ≤100 Wh para computadoras/cámaras COTS (R602).
+- **Baterías extra [FIRST]** (R602, R605 2026): solo baterías USB COTS <= 100 Wh (5 V/5 A o 12 V/5 A USB-PD) o integradas a computadoras/cámaras COTS, bien sujetas y con cables COTS sin modificar. Ninguna otra batería a bordo, ni como lastre.
 
 ---
 
 ## 7. Breakers y fusibles
 
-- **[FIRST]** Solo se permiten los breakers listados: VB3-A, AT2-A, MX5-A o -L, REV ATO o CTR ATO (todos de 40A o menos) en las ranuras ATO/Maxi del PD; en ranuras ATM, fusibles/breakers hasta el valor permitido (R619).
-- **[FIRST]** Fusibles ATC/ATO ≤10A; en PDH, fusibles ATM ≤15A y hasta uno de 20A para PCM/PH (R620).
+- **[FIRST]** (R619 2026) Solo se permiten estos breakers en el PD: Snap Action VB3-A o AT2-A, MX5-A o MX5-L, REV ATO y CTR ATO (todos de 40A o menos), y cualquier ATM de valor <= a los fusibles permitidos por R620.
+- **[FIRST]** (R620 2026) Fusibles de lámina: ATC/ATO <= 10A en cualquier PD; en el PDP, ATM con el valor impreso en su portafusible; en el PDH, ATM <= 15A y un solo fusible de 20A para PCM/PH.
+- **[FIRST]** (R621 2026, Tabla 8-3) Un solo breaker/fusible por circuito: controlador de motor hasta 40A (1 por breaker), circuito personalizado hasta 40A, PCM/PH con compresor y Servo Hub hasta 20A, relé Automation Direct 12A hasta 10A.
 - **[FIRST]** El PD, sus breakers y su cableado deben verse fácilmente para inspección (R613).
 - **[Fabricante]** Asienta bien cada fusible: uno bien colocado es difícil de sacar con la mano.
 - **[Buena práctica]** Usa breaker de 40A para motores grandes (Kraken/NEO/Falcon), 30A para NEO 550 o mecanismos medianos, y mantén los 20A y menos para actuadores pequeños. Un breaker que se dispara es información: revisa el mecanismo (atoramiento) antes de subir el calibre.
@@ -158,7 +163,7 @@ El **VRM** (módulo de regulación de voltaje) del sistema anterior (roboRIO 1 +
 
 ## 8. Aislamiento del chasis
 
-- **[FIRST]** La frame debe estar **eléctricamente aislada**: **> 120 Ω** entre cualquier poste de batería del PD y el chasis (R611).
+- **[FIRST]** (R611 2026) La frame debe estar **eléctricamente aislada**: **> 120 Ω** entre el poste (+) o (−) del conector APP del PD y cualquier punto del robot.
 - **Prueba:** con el robot apagado, mide con multímetro en ohms entre el poste (+) y (−) del PD y un punto **sin pintura** de la frame. Ambos deben marcar abierto o > 120 Ω.
 - **[Buena práctica]** Causas comunes de fuga: cable con aislamiento pelado contra una placa, tornillo largo de un motor, terminal de ojo rozando el aluminio, cinta aplastada. Revisa y reencamina.
 - Nunca conectes el negativo de la batería a la frame (ni como "tierra").
@@ -182,7 +187,7 @@ El panel o "board" de electrónica se diseña en CAD desde el inicio, no se impr
 8. **Rutas de cable:** canaletas, ojales o cinta en bordes de aluminio; protege los cables que pasan por láminas **[Fabricante]**. Mantén holgura lejos de cadenas, bandas y mecanismos que giran o se extienden (dibuja la ruta en el CAD con el mecanismo en todas sus posiciones).
 9. **Protección contra virutas:** limpia todo antes de energizar; cubre el panel (policarbonato) para evitar virutas metálicas y tornillos caídos sobre las terminales **[Buena práctica]**.
 10. **Sujeción:** tornillería (tuerca y perno) o zip ties; Dual Lock solo no basta en choques **[Fabricante]**. Amortigua radio y coprocesadores con espuma/aisladores.
-11. **Baterías:** a un costado, bajas, con correa, ventilación libre y cambio rápido (sin quitar mecanismos) **[FIRST]** R605/R606.
+11. **Baterías:** a un costado, bajas, con correa, ventilación libre y cambio rápido (sin quitar mecanismos) **[FIRST]** (R601-G, R606 2026).
 12. **Pre-cablea el panel fuera del robot**, es mucho más fácil que dentro **[Fabricante]**.
 13. **Etiqueta** todo: canal del PD, ID CAN, FROM/TO **[Buena práctica]**.
 
@@ -199,7 +204,7 @@ El panel o "board" de electrónica se diseña en CAD desde el inicio, no se impr
 | **Gyro / IMU** (Pigeon 2.0, navX) | Pigeon 2.0 por CAN (22 AWG integrado) con su alimentación; navX por MXP/USB | Móntalo plano, rígido y en el centro del robot |
 | **Cámaras / Limelight** | Ethernet CAT5e+ al puerto AUX del radio + alimentación (12V, breaker 20A) | Quita tensión del cable y amortigua |
 
-- **[FIRST]** Los circuitos personalizados y sensores **no pueden alterar** la ruta de potencia batería-PD-controlador-motor (R625); no exceden 24V (R614).
+- **[FIRST]** Los circuitos personalizados y sensores **no pueden alterar** la ruta de potencia batería-PD-controlador-motor (R625 2026); no exceden 24V (R614 2026), salvo inyectores PoE COTS.
 - Con SystemCore (2027) cambian puertos y librerías (CANPort, SPI eliminado); no cablees sensores SPI hoy si piensas migrar.
 - **[Buena práctica]** Alimentación de sensores con fusible de 10A; empalma varios sensores del mismo canal con WAGO 221 en Y.
 
@@ -234,9 +239,9 @@ El panel o "board" de electrónica se diseña en CAD desde el inicio, no se impr
 - [ ] Breakers/fusibles de modelos permitidos y bien asentados
 
 **Cableado**
-- [ ] 40A con 12 AWG mínimo; 30A con 14 AWG; 20A con 18 AWG; menores según Tabla 8-4
+- [ ] 40A con 12 AWG mínimo; 30A con 14 AWG; 20A con 18 AWG; <= 5A/fusible 10A con 22 AWG (Tabla 8-4, R622)
 - [ ] Colores: positivo rojo/amarillo/blanco/café/negro con raya; negativo negro o azul
-- [ ] Un cable por WAGO; sin hilos sueltos; tirón de prueba hecho
+- [ ] Un cable por terminal del PD (R618); un cable por WAGO (buena práctica); sin hilos sueltos; tirón de prueba hecho
 - [ ] Cables protegidos en bordes, con alivio de tensión y lejos de piezas móviles
 - [ ] Todo etiquetado y documentado
 
@@ -252,12 +257,13 @@ El panel o "board" de electrónica se diseña en CAD desde el inicio, no se impr
 - [ ] Robot probado sobre bloques
 
 **Verificación final**
-- [ ] Revisamos las reglas contra el **Manual 2027**
+- [ ] Revisamos las reglas contra el **Manual vigente (FRC 2026)**
 
 ---
 
 ## Fuentes
-- Lista de inspección FRC 2026 Rev. 0: https://firstfrc.blob.core.windows.net/frc2026/Manual/2026FRCInspectionChecklist.pdf (calibres, colores, R6xx; abierto y leído)
+- Manual del Juego FRC 2026, sección 8 (R6xx, R7xx; vigente)
+- Lista de inspección FRC 2026 Rev. 0: https://firstfrc.blob.core.windows.net/frc2026/Manual/2026FRCInspectionChecklist.pdf
 - WPILib, Introduction to FRC Robot Wiring: https://docs.wpilib.org/en/stable/docs/zero-to-robot/step-1/basic-robot-wiring.html
 - WPILib, How to Wire (kitbot) / intro wiring: https://docs.wpilib.org/en/stable/docs/zero-to-robot/step-1/intro-to-frc-robot-wiring.html
 - WPILib, Wiring Best Practices: https://docs.wpilib.org/en/latest/docs/hardware/hardware-basics/wiring-best-practices.html

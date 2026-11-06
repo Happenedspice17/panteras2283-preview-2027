@@ -2,7 +2,7 @@
 
 Guía de criterios de diseño para el robot de Panteras 2283: restricciones de FIRST, presupuestos, organización en Onshape y revisión de diseño.
 
-> **Aviso 2027:** todo lo marcado **[FIRST]** viene de temporadas anteriores y **cambia cada año**. Verifícalo en el Manual del Juego 2027 al salir el kickoff (9 ene 2027) antes de tomar decisiones de diseño. Los números de abajo son referencia, no regla.
+> **Manual vigente: FRC 2026.** Las reglas [FIRST] citan el manual 2026; al salir el de 2027 (9 ene 2027) se actualizan y solo cuenta el vigente. Detalle completo en reglas-frc.md.
 
 Leyenda: **[FIRST]** requisito del manual · **[Fabricante]** recomendación del fabricante · **[Buena práctica]** práctica común de equipos FRC.
 
@@ -10,24 +10,25 @@ Leyenda: **[FIRST]** requisito del manual · **[Fabricante]** recomendación del
 
 ## 1. Restricciones de FIRST que afectan el diseño
 
-| Tema | Qué suele decir el manual (verificar 2027) | Tipo |
+| Tema | Qué dice el manual 2026 | Tipo |
 |---|---|---|
-| **Frame perimeter** | El perímetro del frame debe ser fijo (no articulado), con un máximo de perímetro total; protrusiones menores (~0.25") permitidas. Ver sección Robot Construction (R101 en 2026, verificar). | [FIRST] |
-| **Altura y extensión** | Límite de altura del robot (histórico ~4 ft / 48") y límite de extensión más allá del frame perimeter (histórico ~12"). Cambian con el juego. | [FIRST] |
-| **Peso máximo** | 2026: 115 lb sin bumpers ni batería; robot + bumpers <= 135 lb según el checklist de inspección 2026. Verificar cifras 2027. | [FIRST] |
-| **Bumpers** | Deben cubrir una zona del perímetro, tener tela de color de alianza, ir sujetos con un sistema que soporte golpes, y respetar anchos/alturas y extensión desde el perímetro (2026: partes del bumper <= 4.25" del perímetro; partes duras <= 1.5", R403/R404 según el checklist). Ver sección Bumpers del manual. | [FIRST] |
-| **Costo por pieza** | Límite de costo de cada ítem comercial o fabricado, y límite total de costo del robot (varía por año; histórico ~$600 por pieza y ~$4,000-$7,500 total). Consulta Robot Construction. | [FIRST] |
-| **Materiales prohibidos** | Hay restricciones sobre materiales peligrosos, resortes de gran energía, hidráulicos, líquidos peligrosos, etc. Lee la lista completa del manual. | [FIRST] |
-| **Partes del Kit** | Lo que viene en el Kit of Parts y lo que se puede usar sin cuenta de costo; lista cambia cada año. | [FIRST] |
-| **Seguridad** | No bordes filosos, no piezas que dañen el campo o robots rivales, no estructura que se desprenda. | [FIRST] |
+| **Frame perimeter** | El ROBOT PERIMETER debe ser fijo (sin elementos articulados) y quedar dentro de la BUMPER ZONE; protrusiones menores <= 0.25" (pernos, remaches, soldaduras) no cuentan. En configuración inicial el perímetro no puede exceder **110 in** (2.794 m) y nada puede sobresalir de su proyección vertical (salvo bumpers y protrusiones menores). | **[FIRST]** (R101, R102, R104 2026) |
+| **Altura y extensión** | Altura máxima **30 in** (76.2 cm), tanto en configuración inicial como en total (R104, R107). Extensión horizontal máxima **12 in** más allá de la proyección del perímetro (R105), y solo hacia un lado a la vez (R106). Las extensiones no pueden levantar los bumpers fuera de la BUMPER ZONE al interactuar con alfombra, BUMPS o TOWER BASE (R108). | **[FIRST]** (R104, R105, R106, R107, R108 2026) |
+| **Peso máximo** | Robot **<= 115.0 lb** (52.16 kg) sin bumpers ni batería (con su mitad del cable Anderson) (R103). Robot con bumpers (sin batería) **<= 135.0 lb** (61.23 kg) (R408). | **[FIRST]** (R103, R408 2026) |
+| **Bumpers** | Cubren todo el perímetro (huecos < 1.25"; un hueco mayor permitido si quedan >= 5" protegidos a cada lado de cada esquina) (R401). Espuma >= 2.25" de profundidad y >= 4.5" de alto, backing >= 4.5", cubierta de tela y fijación rígida (no velcro, cinta ni cable ties) (R402). Extensión máx. **4.0"** del perímetro (R403); partes duras máx. **1.25"** y la espuma debe sobresalir >= 2.0" de ellas (R404). Deben llenar la BUMPER ZONE de **2.5" a 5.75"** del piso (R405), esquinas rellenas con >= 2.25" de espuma sin comprimir (R406), sin forma de cuña (R407), pasivos (R409), removibles en < 5 min con 2 personas como guía (R410), tela roja o azul según alianza (R411) y número de equipo blanco, >= 3.75" de alto, en >= 3 lugares (R412). | **[FIRST]** (R401-R412 2026) |
+| **Costo por pieza** | Ningún ítem no-KOP o software puede tener un valor justo de mercado (FMV) mayor a **$600 USD** (R301). El manual 2026 (sección 8) no trae un límite de costo total del robot en esta sección. Un kit o sistema de un proveedor cuenta como un solo ítem. | **[FIRST]** (R301 2026) |
+| **Materiales prohibidos** | Prohibido: materiales peligrosos (p. ej. plomo, encapsulado o no), hidráulicos, gases inflamables, pirotecnia, mercurio líquido, circuitos > 24 V, lastre suelto, láseres que no sean Clase 1, luces estroboscópicas > ~5 Hz y luces de alta intensidad sin control (R203). Tracción sin superficies que dañen la alfombra (metal, lija, tacos rígidos, velcro) (R201). Sin líquidos, geles, grasas ni partículas finas que contaminen el campo (R205). | **[FIRST]** (R201, R203, R205 2026) |
+| **Neumática** | Solo piezas COTS permitidas (R801, R802, R804). Almacenamiento <= **120 psi** (R807), trabajo <= **60 psi** con un regulador primario (R808), válvula de alivio a 125 psi (R811). Si usas neumática son obligatorios: 1 compresor <= 1.1 cfm, válvula de alivio, switch/sensor de presión, tapón de venteo, 2 manómetros y regulador (R805, R806). Sin modificar las piezas (R803). | **[FIRST]** (R801-R814 2026) |
+| **Partes del Kit** | Los ítems del KOP quedan fuera del límite de $600 de R301. Las partes del KOP se listan en la Virtual KOP del año; el manual 2026 sección 8 solo las menciona de forma indirecta. Los diseños y software hechos antes del kickoff solo valen si eran públicos (R303); los MAJOR MECHANISMS no pueden construirse antes del kickoff (R302). | **[FIRST]** (R301, R302, R303 2026) |
+| **Seguridad** | Sin bordes o protrusiones que dañen el ARENA, SCORING ELEMENTS o personas (R202, R206); el robot debe permitir sacar piezas de juego y salir del campo estando deshabilitado y apagado (R204); nada que dañe o interfiera con otros robots (R203). | **[FIRST]** (R202, R203, R204, R206 2026) |
 
-**[Buena práctica]** Crea un documento "Reglas clave 2027" con la regla, su número y quién la verificó. Reléelo en el design review.
+**[Buena práctica]** Crea un documento "Reglas clave" con la regla, su número y quién la verificó. Reléelo en el design review.
 
 ---
 
 ## 2. Presupuesto de peso por subsistema
 
-Reparte desde el inicio (en lb; ajusta al límite 2027):
+Reparte desde el inicio (en lb; ajusta al límite vigente: 115 lb sin bumpers ni batería, R103 2026):
 
 | Subsistema | % orientativo | Notas |
 |---|---|---|
@@ -104,7 +105,7 @@ Haz al menos tres: concepto, diseño detallado, antes de fabricar. Pregunta:
 
 ## 8. Errores comunes
 
-- Diseñar sin revisar las reglas 2027.
+- Diseñar sin revisar el manual vigente.
 - No presupuestar peso hasta que ya sobrepasa.
 - Diseñar el mecanismo ideal sin prototipo.
 - No considerar la altura del CG.
@@ -114,7 +115,7 @@ Haz al menos tres: concepto, diseño detallado, antes de fabricar. Pregunta:
 
 ## 9. Checklist de design review
 
-- [ ] Reglas [FIRST] 2027 revisadas y documentadas.
+- [ ] Reglas [FIRST] 2026 revisadas y documentadas.
 - [ ] Perímetro, altura, extensión verificados en CAD.
 - [ ] Peso total y por subsistema dentro del presupuesto con reserva.
 - [ ] CG calculado en configuraciones extendidas.

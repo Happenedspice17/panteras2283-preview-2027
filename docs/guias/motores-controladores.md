@@ -2,7 +2,7 @@
 
 Guía para elegir motor, controlador, reducción y sensor de cada mecanismo del robot, y configurar límites de corriente y modo brake/coast.
 
-> **Aviso (leer primero).** Las reglas marcadas **[FIRST]** (motores legales, límites de corriente de breakers, cantidad de motores, cableado) cambian cada año. Verifícalas en el manual del juego 2027 cuando salga el kickoff (9 de enero de 2027), sección *Robot Construction / Electrical* (reglas de "Motors" y "Power"), y en el *Blue Box* de las reglas. Esta guía no sustituye al manual. Los datos de motores son del fabricante a la fecha de escritura; algunos son preliminares y se marcan.
+> **Manual vigente: FRC 2026.** Las reglas [FIRST] citan el manual 2026; al salir el de 2027 (9 ene 2027) se actualizan y solo cuenta el vigente. Detalle completo en reglas-frc.md.
 
 **Tipos de viñeta:** **[FIRST]** = requisito del manual · **[Fabricante]** = recomendación del fabricante · **[Buena práctica]** = práctica común de equipos FRC.
 
@@ -13,7 +13,7 @@ Guía para elegir motor, controlador, reducción y sensor de cada mecanismo del 
 - **[Buena práctica]** Para casi todo lo nuevo: **Kraken X60** (potencia alta), **Kraken X44 / Minion** (mecanismos medianos) y **NEO / NEO Vortex / NEO 550** si el equipo ya tiene ecosistema REV (SPARK MAX/Flex).
 - **[Fabricante]** El Kraken trae su controlador (Talon FX) integrado. El Minion se controla con **Talon FXS**. El NEO y NEO 550 van con **SPARK MAX** (o Flex); el NEO Vortex va con **SPARK Flex**.
 - **Nunca** conectes un motor brushless a un controlador que solo maneja brushed ni al revés (ver sección 3).
-- **[FIRST]** Solo se pueden usar motores de la lista del manual vigente. Confirma que cada motor y cada controlador siguen siendo legales para 2027 antes de comprarlos.
+- **[FIRST]** (R501, R504 2026) Solo se pueden usar los motores de la Tabla 8-1 y los controladores de R504 (lista completa en la sección 2.1). Kraken X60/X44, Minion, Falcon 500, NEO, NEO Vortex, NEO 550, CIM, Mini CIM, BAG y 775 Pro son todos legales en 2026, en cualquier cantidad (salvo los 4 motores de propulsión, R502).
 
 ---
 
@@ -31,23 +31,42 @@ Valores a 12 V del fabricante (Kraken con conmutación trapezoidal salvo que se 
 | **NEO v1.1** (REV) | Brushless con hall sensors | 5,820 (5,676 en la ficha de producto) | 3.0 (2.6 en la ficha) | 160 (105 en la ficha) | 0.938 lb (0.425 kg) | SPARK MAX o SPARK Flex | Eje 8 mm con cuña (keyed), 35 mm de largo |
 | **NEO Vortex** (REV) | Brushless, hall, eje pasante | 6,784 | 3.6 | 211 | 0.99 lb (447 g) | **SPARK Flex** (directo) o SPARK MAX con adaptador *Vortex Solo Adapter* | Hex 1/2 in pasante, cónico; acepta ejes especiales (8 mm keyed, spline tipo Falcon, MAXSwerve, MAXPlanetary) |
 | **NEO 550** (REV) | Brushless, chico | 11,000 | 0.97 | 100 | 0.313 lb (0.142 kg) | SPARK MAX | Eje 0.125 in (3.175 mm) |
-| **Falcon 500** (VEX/CTRE) **(estado: ver nota)** | Brushless, Talon FX integrado | 6,380 | 4.69 | 257 | ~1.1 lb* | Integrado (Talon FX) | Spline (Falcon) |
+| **Falcon 500** (VEX/CTRE) (legal 2026, R501) | Brushless, Talon FX integrado | 6,380 | 4.69 | 257 | ~1.1 lb* | Integrado (Talon FX) | Spline (Falcon) |
 | **CIM** (legacy) | **Brushed** | 5,310 | 2.425 | 131 | ~2.8 lb* | Talon SRX / Victor SPX / SPARK MAX (modo brushed) | Eje 8 mm con cuña (keyed)... confirmar en ficha |
 | **Mini CIM** (legacy) | Brushed | 5,840 | 1.41 | 89 | ~2.16 lb* | igual | confirmar en ficha |
 | **BAG** (legacy) | Brushed | 13,180 | 0.43 | 53 | ~0.71 lb* | igual | confirmar en ficha |
-| **775pro** (legacy) | Brushed | **no verificado** | no verificado | no verificado | no verificado | igual | no verificado |
+| **775pro** (legacy; legal 2026 como WCP RS775 Pro, Banebots RS775 y Thrifty Pulsar 775) | Brushed | **no verificado** | no verificado | no verificado | no verificado | igual | no verificado |
 
 \* Peso tomado de una wiki de equipo (FRC 3255), no del fabricante; úsalo como aproximación y pesa el motor real.
 
 **Notas**
 
-- **[FIRST]** La legalidad de cada motor (y el número máximo por mecanismo o por robot) se define en el manual 2027. No asumas que un motor legal en 2026 sigue legal.
-- **Falcon 500:** no encontré un anuncio oficial de fin de vida; fuentes de equipos lo dan por descontinuado y la tienda de CTRE lo muestra sin existencias. Su legalidad en 2027 hay que confirmarla en el manual. Para diseño nuevo, elige Kraken.
+- **[FIRST]** (R501 2026) La legalidad de cada motor está en la Tabla 8-1 (sección 2.1). Los motores no se limitan en cantidad, salvo los de propulsión (R502).
+- **Falcon 500:** es legal en 2026 (R501: P/N 217-6515, am-6515, am-6515_Short), aunque CTRE lo dejó de vender y la tienda lo muestra sin existencias. Para diseño nuevo, elige Kraken.
 - **Minion:** CTRE publica dos free speed distintos (7,000 en la tabla preliminar, 7,384 en la sección sin FOC). Revisa la ficha vigente. Stall current no lo pude verificar.
 - **Kraken X44:** WCP publicó valores preliminares anteriores (7,530 RPM, 4.05 N·m, 275 A). Los de la tabla son los de la documentación actual de WCP. CTRE mantiene datos de dinamómetro actualizados en su *Motor Testing Lab*.
 - **NEO v1.1:** la documentación de REV muestra dos juegos de datos (comparativa: 5,820 RPM / 3.0 N·m / 160 A; ficha de producto: 5,676 / 2.6 / 105). Para cálculos usa la comparativa más reciente y deja margen.
 - **CIM, mini CIM, BAG:** valores de una wiki de equipo (FRC 3255); no los contrasté con la ficha de AndyMark/VEX. Confirma que la legalidad y la interfaz de eje.
 - **Stall** (motor trabado) es un límite teórico: nunca diseñes para operar ahí. Sirve para dimensionar fusibles y límites de corriente.
+
+### 2.1 Motores legales según el manual FRC 2026
+
+**[FIRST]** (R501, Tabla 8-1 2026) Motores y actuadores permitidos, en cualquier cantidad:
+
+- AndyMark 9015, NeveRest, PG, RedLine, Snow Blower.
+- Banebots (M5 RS550, M7 RS775-18, RS775WC-8514, RS550 y variantes del manual).
+- CIM (todas las variantes del manual), VEX BAG, VEX Mini-CIM, y los motores automotrices actuales o pasados del KOP (Denso, Bosch, Johnson Electric del manual).
+- CTR Electronics Minion; CTR/VEX Falcon 500; West Coast Products Kraken X44 (WCP-0941) y Kraken X60 (WCP-0940, am-5274); WCP RS775 Pro.
+- Playing With Fusion Venom; ThriftyBot Pulsar 775.
+- REV HD Hex, REV NEO Brushless, REV NEO 550, REV NEO Vortex.
+- Ventiladores <= 120 mm y <= 10 W a 12 V; motores de discos duros y de vibración/autofoco de dispositivos de cómputo COTS legales; motores integrales de sensores COTS.
+- Servos PWM COTS rotativos (stall <= 4 A y potencia mecánica <= 8 W a 6 V) y lineales (stall <= 1 A a 6 V).
+- 1 compresor conforme a R806.
+- Cualquier motor brushed COTS, actuador lineal, solenoide o electroimán de 12 V cableado a un dispositivo regulador aprobado tras un breaker de 20 A o menos (solenoides a 24 V deben estar clasificados para 24 V).
+
+**[FIRST]** Máximo **4 motores de propulsión** (R502; no cuentan los de dirección swerve, mecanismos o cambios de velocidad). **[FIRST]** No se modifica la parte eléctrica ni mecánica interna del motor; solo soportes y eje de salida, cables (acortar, conectores), eliminar los tornillos #10-32 del Falcon/Kraken X60 y reparaciones que mantengan el desempeño (R503).
+
+**[FIRST]** Controladores permitidos (R504 2026): Koors40 (am-5600), SPARK Flex, SPARK, SPARK MAX, Talon FX (solo para su Falcon/Kraken integral), Talon FXS, Talon, Talon SRX, Thrifty Nova, Venom (solo su motor integral), Victor SP y Victor SPX; relés Spike y Automation Direct; Pneumatics Control Module y Pneumatic Hub; Servo Hub (REV-11-1855). Los servos solo van al roboRIO, a la Spartan Sensor Board, al Servo Power Module o al Servo Hub (R506).
 
 ---
 
@@ -67,7 +86,7 @@ Valores a 12 V del fabricante (Kraken con conmutación trapezoidal salvo que se 
 - **Nunca** conectes un brushless (NEO, Vortex, Minion, 550...) a un controlador brushed-only (Victor SPX, Talon SRX) ni configures un brushed como brushless. Se dañan el motor o el controlador.
 - **[Fabricante]** En SPARK MAX/Flex el **tipo de motor** se configura en el controlador (NEO/NEO 550: *REV NEO Brushless* con sensor *Hall Effect*; brushed: *Brushed*). Verifica el LED y el tipo de motor antes de dar potencia.
 - **[Buena práctica]** Prueba con el robot **sobre bloques (ruedas en el aire)** y con el área despejada la primera vez que energizas un motor nuevo. Mano lejos de mecanismos.
-- **[FIRST]** Calibre de cable, breaker y fusible por motor/controlador: ver sección *Electrical* del manual vigente y *Wiring the FRC Control System* en docs.wpilib.org.
+- **[FIRST]** (R505, R621, R622 2026) Cada controlador de motor maneja una sola carga (hasta 2 por controlador para 9015, BAG, PG, NeveRest, Snow Blower, HD Hex, motores KOP y otros brushed); breaker de hasta 40A por controlador y calibre según la Tabla 8-4 (12 AWG para 31-40A, 14 AWG para 21-30A, 18 AWG para 6-20A). Ver también *Wiring the FRC Control System* en docs.wpilib.org.
 
 ---
 
@@ -123,7 +142,7 @@ Regla general **[Buena práctica]**: empieza por la carga (peso, fuerza, velocid
 - **Ejemplos de CTRE** (no universales): ~70 A de supply en drive swerve y ~30 A en un elevador.
 - **SPARK MAX/Flex [Fabricante, REV]:** el *Smart Current Limit* por defecto es 80 A para cualquier motor; REV sugiere empezar con **40 a 60 A para NEO** y **20 a 40 A para NEO 550**. Un límite fuera de rango puede dañar el motor y no está cubierto por garantía. Guarda los parámetros en la memoria flash (*Persist Parameters*) para que sobrevivan a un reinicio.
 - **Brownout:** el roboRIO deshabilita actuadores por debajo de ~6.3 V (roboRIO 1) o 6.75 V por defecto (roboRIO 2). Antes de apretar límites, revisa batería, conexiones y cableado.
-- **[FIRST]** Los breakers del PDP/PDH y sus amperajes por circuito están definidos en el manual vigente. Los límites por software **no sustituyen** al breaker correcto.
+- **[FIRST]** (R619, R621 2026) Los breakers del PD son VB3-A/AT2-A/MX5/ATO de hasta 40A y un controlador de motor usa hasta 40A (Tabla 8-3). Los límites por software **no sustituyen** al breaker correcto.
 
 ### Modo brake vs coast
 
@@ -242,7 +261,7 @@ Enlaces (WPILib):
 7. Usar brake en un mecanismo con peso y creer que "sostiene" para siempre.
 8. Cadena o banda sin tensión o sin la distancia entre ejes calculada.
 9. Eje largo sin soporte de rodamiento en ambos lados.
-10. No verificar la legalidad de motores/controladores en el manual del año.
+10. No verificar la legalidad de motores/controladores en el manual vigente.
 11. No guardar la configuración del controlador (parámetros sin persistir).
 12. Ruedas patinando porque no se limitó el stator del drive.
 
@@ -251,7 +270,7 @@ Enlaces (WPILib):
 ## 11. Checklist de selección
 
 **Antes de cotizar o diseñar**
-- [ ] Confirmé en el manual 2027 que el motor y el controlador son legales y cuántos puedo usar.
+- [ ] Confirmé en el manual vigente (2026) que el motor y el controlador son legales (R501, R504) y que no paso de 4 motores de propulsión (R502).
 - [ ] Definí velocidad, carga y tiempo de recorrido del mecanismo.
 - [ ] Corrí ReCalc con motor, reducción, carga y límite de corriente; la corriente está lejos de stall.
 - [ ] Hay un controlador compatible con el motor (brushed/brushless correcto).

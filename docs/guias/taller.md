@@ -2,13 +2,15 @@
 
 Guía para elegir, usar y mantener las herramientas del taller del equipo: qué sirve para cada tarea, qué precisión esperar, qué riesgos tiene y quién puede operarla.
 
-> **Aviso FIRST.** Las reglas marcadas **[FIRST]** son aproximadas y cambian cada año. Verifícalas en el manual FRC 2027 cuando salga el kickoff (9 ene 2027) antes de confiar en ellas. Las reglas de seguridad del taller (EPP, guardas, inducción) son del equipo y del plantel; FIRST no las define con detalle para cada máquina.
+> **Manual vigente: FRC 2026.** Las reglas [FIRST] citan el manual 2026; al salir el de 2027 (9 ene 2027) se actualizan y solo cuenta el vigente. Detalle completo en reglas-frc.md.
+>
+> Las reglas de seguridad del taller (EPP, guardas, inducción) son del equipo y del plantel; el manual 2026 (sección 8) no las define con detalle para cada máquina.
 >
 > **Regla general.** Ninguna herramienta de esta guía se usa sin **inducción firmada** y, en las máquinas de corte, taladro, esmeril, torno, fresadora, router CNC, láser y prensas, **con un adulto presente** (mentor o docente). Si no hay adulto, no se enciende la máquina.
 
 ## Leyenda
 
-- **[FIRST]** requisito o principio del manual de FRC. Si no tenemos el número exacto de regla, se indica la sección.
+- **[FIRST]** requisito del manual FRC 2026, con su número de regla.
 - **[Fabricante]** recomendación del fabricante de la herramienta o del material.
 - **[Buena práctica]** práctica común de equipos FRC y talleres de seguridad.
 - **Orientativo** valor de referencia. Siempre se confirma con la hoja del fabricante o con una prueba en retal.
@@ -417,7 +419,7 @@ Quién puede usarlas: alumno con inducción; adulto presente cuando hay corrient
 
 ### Equipo de protección personal (EPP)
 
-- **Lentes de seguridad** (ANSI Z87.1 o equivalente) **siempre** en el taller, no solo en la máquina. Lentes con protección lateral. [Buena práctica y FIRST] Protección ocular requerida en el área de trabajo y cerca del robot; ver la sección de seguridad del manual vigente.
+- **Lentes de seguridad** (ANSI Z87.1 o equivalente) **siempre** en el taller, no solo en la máquina. Lentes con protección lateral. [Buena práctica] Política del equipo; la sección 8 del manual 2026 no define el EPP del taller.
 - **Careta (face shield)** adicional en esmeril, Dremel, ingletadora y cualquier máquina con viruta que salga a alta velocidad.
 - **Protección auditiva** cuando el ruido es de 85 dB o más, por tiempo prolongado. Ej.: ingletadora, esmeril, router, compresor. [Buena práctica]
 - **Mascarilla para polvo** (N95 o mejor) al lijar, cortar MDF, madera, fibra o plástico. Para vapores de soldadura o plásticos quemados, usa respirador con cartucho.

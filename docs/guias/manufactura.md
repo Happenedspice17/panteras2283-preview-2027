@@ -2,7 +2,9 @@
 
 Guía para que lo que diseñas en Onshape se pueda fabricar bien, rápido y barato: lámina, perfil, láser, router, waterjet e impresión 3D.
 
-> **Aviso 2027:** las reglas marcadas **[FIRST]** cambian cada temporada. Verifícalas en el Manual del Juego 2027 cuando salga el kickoff (9 ene 2027). Los valores de tolerancia son punto de partida: **siempre corta una pieza de prueba** con tu máquina y tu material antes de fabricar la serie.
+> **Manual vigente: FRC 2026.** Las reglas [FIRST] citan el manual 2026; al salir el de 2027 (9 ene 2027) se actualizan y solo cuenta el vigente. Detalle completo en reglas-frc.md.
+
+Los valores de tolerancia son punto de partida: **siempre corta una pieza de prueba** con tu máquina y tu material antes de fabricar la serie.
 
 Leyenda: **[FIRST]** requisito del manual · **[Fabricante]** recomendación del fabricante · **[Buena práctica]** práctica común de equipos FRC.
 
@@ -264,6 +266,18 @@ Usa fluido de corte, machuelo de espiral o de punta según el caso, gira 1/2 vue
 
 ---
 
+## 9.1 Reglas FIRST que afectan lo que fabricamos
+
+- **[FIRST]** (R301 2026) Ningún ítem no-KOP, comprado o fabricado, puede tener un valor justo de mercado (FMV) mayor a **$600 USD**. En piezas fabricadas cuenta el material (la cantidad mínima comprable de donde sale la pieza) y la mano de obra, excepto la de miembros del equipo, de otros equipos y de talleres del evento. Un kit o sistema vendido como conjunto cuenta completo.
+- **[FIRST]** (R302, R303 2026) Los MAJOR MECHANISMS no pueden construirse antes del kickoff; diseños y software previos solo valen si sus archivos fuente eran públicos antes del kickoff.
+- **[FIRST]** (R202, R206 2026) Nada de bordes filosos ni salientes que dañen el ARENA, las piezas de juego o personas: rebabea y lima. El acrílico u otros materiales que se astillan no están prohibidos, pero cualquier rotura debe corregirse de inmediato.
+- **[FIRST]** (R203 2026) No se permiten partes de materiales peligrosos (p. ej. plomo, encapsulado o no), lastre suelto, fluidos hidráulicos ni circuitos de más de 24 V.
+- **[FIRST]** (R201 2026) Las superficies de tracción no pueden tener elementos que dañen la alfombra (metal, lija, tacos rígidos, velcro).
+- **[FIRST]** (R103, R408 2026) Peso máximo 115 lb sin bumpers ni batería y 135 lb con bumpers: pesa las piezas fabricadas.
+- **[FIRST]** (R404 2026) Las partes duras de los bumpers (soportes, tornillos, plásticos duros) no pueden sobresalir más de 1.25" del perímetro del robot.
+
+---
+
 ## 10. Errores comunes
 
 - Dobleces demasiado cerca de agujeros o con radio inferior al permitido.
@@ -273,7 +287,7 @@ Usa fluido de corte, machuelo de espiral o de punta según el caso, gira 1/2 vue
 - Usar 6061-T6 doblado con radio cerrado (se agrieta).
 - Olvidar rebabear y limar.
 - Tornillos sin Loctite o sin nyloc en zonas de vibración.
-- Cortar con láser un plástico prohibido.
+- Cortar con láser un plástico no apto (PVC, policarbonato, ABS: gases tóxicos o mal corte) **[Buena práctica]**.
 
 ## 11. Checklist antes de mandar a fabricar
 
@@ -291,6 +305,6 @@ Usa fluido de corte, machuelo de espiral o de punta según el caso, gira 1/2 vue
 
 ## Fuentes
 
-- https://info.firstinspires.org/hubfs/blog/frc/2024-bumper-rule-changes.pdf
+- Manual del Juego FRC 2026, sección 8 (R2xx, R3xx, R4xx; vigente)
 - https://firstfrc.blob.core.windows.net/frc2026/Manual/2026FRCInspectionChecklist.pdf
 - Valores de roscas, brocas y holguras: tablas estándar de maquinista (Machinery's Handbook); valores de proceso: práctica común de equipos FRC. Verifica con tu proveedor y fabricante (REV, WCP, Thrifty Bot, SendCutSend).
